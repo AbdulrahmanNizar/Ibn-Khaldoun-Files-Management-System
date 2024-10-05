@@ -21,37 +21,32 @@ export class RegistrationService {
     requestInfo: SignUpUserDto,
   ): Promise<SuccessResponseObjectDto | void> {
     try {
-      // checking if the username valid or no
-      const checkTheUserName = await this.userModel.find({
+      // generate a salt for the hashed password, and hash the new user's password
+      const salt = await bcrypt.genSalt(10);
+      const hashedPassword = await bcrypt.hash(requestInfo.password, salt);
+
+      // add the new user to the database
+      const newUser = new this.userModel({
         username: requestInfo.username,
+        email: requestInfo.email,
+        password: hashedPassword,
+        idNumber: requestInfo.userIdNumber,
+        phoneNumber: requestInfo.userPhoneNumber,
+        grade: requestInfo.userGrade,
+        class: requestInfo.userClass,
+        logged: true,
       });
+      await newUser.save();
 
-      if (checkTheUserName.length > 0) {
-        throw new HttpException('The username is already exist', 400);
-      } else {
-        // generate a salt for the hashed password, and hash the new user's password
-        const salt = await bcrypt.genSalt(10);
-        const hashedPassword = await bcrypt.hash(requestInfo.password, salt);
+      // generate a jwt token for the new user
+      const jwtToken = this.jwtService.sign({ id: newUser._id });
 
-        // add the new user to the database
-        const newUser = new this.userModel({
-          username: requestInfo.username,
-          email: requestInfo.email,
-          password: hashedPassword,
-          logged: true,
-        });
-        await newUser.save();
-
-        // generate a jwt token for the new user
-        const jwtToken = this.jwtService.sign({ id: newUser._id });
-
-        // done
-        return {
-          successMessage: 'User created successfully',
-          statusCode: 201,
-          data: { token: jwtToken, userId: newUser._id },
-        };
-      }
+      // done
+      return {
+        successMessage: 'تم انشاء مستخدم جديد بنجاح',
+        statusCode: 201,
+        data: { token: jwtToken, userId: newUser._id },
+      };
     } catch (err) {
       throw new HttpException(err, err.status);
     }
@@ -63,7 +58,7 @@ export class RegistrationService {
     try {
       // checking if the user exist or no
       const userExists = await this.userModel.find({
-        email: requestInfo.email,
+        idNumber: requestInfo.userIdNumber,
       });
 
       if (userExists.length > 0) {
@@ -84,15 +79,15 @@ export class RegistrationService {
 
           // done
           return {
-            successMessage: 'Logged in successfully',
+            successMessage: 'تم تسجيل دخول بنجاح',
             statusCode: 200,
             data: { token: jwtToken, userId: userExists[0]._id },
           };
         } else {
-          throw new HttpException('Wrong email or password', 400);
+          throw new HttpException('رقم الهوية او كلمة السر خطأ', 400);
         }
       } else {
-        throw new HttpException('Wrong email or password', 400);
+        throw new HttpException('رقم الهوية او كلمة السر خطأ', 400);
       }
     } catch (err) {
       throw new HttpException(err, err.status);
@@ -111,7 +106,7 @@ export class RegistrationService {
 
       // done
       return {
-        successMessage: 'Logged out successfully',
+        successMessage: 'تم تسجيل خروج بنجاح',
         statusCode: 200,
       };
     } catch (err) {

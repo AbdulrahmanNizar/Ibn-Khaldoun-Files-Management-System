@@ -12,10 +12,10 @@ export class RegistrationController {
 
   @Post('/signup')
   async signup(
-    @Body() createUserDto: SignUpUserDto,
+    @Body() signupUserDto: SignUpUserDto,
     @Res() res,
   ): Promise<SuccessResponseObjectDto | void> {
-    res.status(201).json(await this.registrationService.signup(createUserDto));
+    res.status(201).json(await this.registrationService.signup(signupUserDto));
   }
 
   @Post('/login')
