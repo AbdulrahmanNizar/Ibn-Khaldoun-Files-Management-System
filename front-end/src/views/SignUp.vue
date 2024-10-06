@@ -340,8 +340,8 @@ const signup = async (): Promise<void> => {
         if (data.statusCode >= 200 && data.statusCode < 300) {
           showLoader.value = false;
 
-          localStorage.setItem("UserId", data.userId);
-          localStorage.setItem("JwtToken", data.token);
+          localStorage.setItem("UserId", data.data.userId);
+          localStorage.setItem("JwtToken", data.data.token);
 
           router.push({ path: "/main" });
         } else {
