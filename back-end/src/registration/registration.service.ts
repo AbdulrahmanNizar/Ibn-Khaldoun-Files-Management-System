@@ -30,7 +30,7 @@ export class RegistrationService {
         username: requestInfo.username,
         email: requestInfo.email,
         password: hashedPassword,
-        idNumber: requestInfo.userIdNumber,
+        nationalId: requestInfo.userNationalId,
         phoneNumber: requestInfo.userPhoneNumber,
         grade: requestInfo.userGrade,
         class: requestInfo.userClass,
@@ -58,7 +58,7 @@ export class RegistrationService {
     try {
       // checking if the user exist or no
       const userExists = await this.userModel.find({
-        idNumber: requestInfo.userIdNumber,
+        nationalId: requestInfo.userNationalId,
       });
 
       if (userExists.length > 0) {
