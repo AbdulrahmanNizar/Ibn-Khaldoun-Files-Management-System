@@ -1,5 +1,0 @@
-bootstrap
-bootstrap-icons
-@popperjs/core
-@vuelidate/core
-@vuelidate/validators
