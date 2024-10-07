@@ -342,6 +342,7 @@ const signup = async (): Promise<void> => {
 
           localStorage.setItem("UserId", data.data.userId);
           localStorage.setItem("Username", data.data.username);
+          localStorage.setItem("UserGrade", data.data.userGrade);
           localStorage.setItem("JwtToken", data.data.token);
 
           router.push({ path: "/main" });

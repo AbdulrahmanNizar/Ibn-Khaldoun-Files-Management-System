@@ -6,7 +6,7 @@
       class="mt-4 w-100 d-flex flex-column justify-content-end align-items-end p-3"
     >
       <h3 class="mb-0 fs-2 me-4 text-end">مرحبا {{ username }}</h3>
-      <p class="fs-4 me-4 mt-3 text-end">
+      <p class="fs-4 me-4 my-3 text-end">
         يمكنك هنا اختيار الفصل الذي تريد ادارة ملفاتك فيه
       </p>
 
