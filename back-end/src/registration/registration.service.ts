@@ -45,7 +45,12 @@ export class RegistrationService {
       return {
         successMessage: 'تم انشاء مستخدم جديد بنجاح',
         statusCode: 201,
-        data: { token: jwtToken, userId: newUser._id },
+        data: {
+          token: jwtToken,
+          userId: newUser._id,
+          username: newUser.username,
+          userGrade: newUser.grade,
+        },
       };
     } catch (err) {
       throw new HttpException(err, err.status);
@@ -81,7 +86,12 @@ export class RegistrationService {
           return {
             successMessage: 'تم تسجيل دخول بنجاح',
             statusCode: 200,
-            data: { token: jwtToken, userId: userExists[0]._id },
+            data: {
+              token: jwtToken,
+              userId: userExists[0]._id,
+              username: userExists[0].username,
+              userGrade: userExists[0].grade,
+            },
           };
         } else {
           throw new HttpException('رقم الهوية او كلمة السر خطأ', 400);
