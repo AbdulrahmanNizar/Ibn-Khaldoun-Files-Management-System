@@ -341,9 +341,11 @@ const signup = async (): Promise<void> => {
           showLoader.value = false;
 
           localStorage.setItem("UserId", data.data.userId);
+          localStorage.setItem("Username", data.data.username);
           localStorage.setItem("JwtToken", data.data.token);
 
           router.push({ path: "/main" });
+          window.location.reload();
         } else {
           showLoader.value = false;
         }

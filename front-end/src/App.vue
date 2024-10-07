@@ -14,33 +14,33 @@ const router = useRouter();
 const route = useRoute();
 const JwtToken = ref<string | null>(localStorage.getItem("JwtToken"));
 
-// onMounted(async (): Promise<void> => {
-//   if (route.path != "/login" && route.path != "/signup") {
-//     if (JwtToken.value != "") {
-//       const requestOptions: any = {
-//         method: "POST",
-//         mode: "cors",
-//         headers: { "Content-Type": "application/json" },
-//         body: JSON.stringify({
-//           token: JwtToken.value,
-//         }),
-//       };
+onMounted(async (): Promise<void> => {
+  if (route.path != "/login" && route.path != "/signup") {
+    if (JwtToken.value != "") {
+      const requestOptions: any = {
+        method: "POST",
+        mode: "cors",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          token: JwtToken.value,
+        }),
+      };
 
-//       const response = await fetch(
-//         "http://192.168.1.241:3000/registration/validateTheAuthToken",
-//         requestOptions
-//       );
-//       const data = await response.json();
-//       if (data.name == "JsonWebTokenError") {
-//         localStorage.clear();
-//         router.push({ path: "/login" });
-//       }
-//     } else {
-//       localStorage.clear();
-//       router.push({ path: "/login" });
-//     }
-//   }
-// });
+      const response = await fetch(
+        "http://192.168.1.241:3000/registration/validateTheAuthToken",
+        requestOptions
+      );
+      const data = await response.json();
+      if (data.name == "JsonWebTokenError") {
+        localStorage.clear();
+        router.push({ path: "/login" });
+      }
+    } else {
+      localStorage.clear();
+      router.push({ path: "/login" });
+    }
+  }
+});
 </script>
 
 <style>
