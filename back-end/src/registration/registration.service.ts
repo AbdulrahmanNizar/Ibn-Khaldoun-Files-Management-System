@@ -49,7 +49,6 @@ export class RegistrationService {
           token: jwtToken,
           userId: newUser._id,
           username: newUser.username,
-          userGrade: newUser.grade,
         },
       };
     } catch (err) {
@@ -90,7 +89,6 @@ export class RegistrationService {
               token: jwtToken,
               userId: userExists[0]._id,
               username: userExists[0].username,
-              userGrade: userExists[0].grade,
             },
           };
         } else {
