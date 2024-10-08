@@ -25,6 +25,15 @@
             {{ errorForInvalidPassword }}
           </div>
         </transition>
+        <transition name="fadeError">
+          <div
+            class="alert alert-danger w-100 text-center"
+            role="alert"
+            v-if="showErrorForLogin"
+          >
+            {{ errorForLogin }}
+          </div>
+        </transition>
 
         <hr class="w-100" />
 
@@ -101,6 +110,8 @@ const password = ref<string>("");
 const userNationalId = ref<string>("");
 const showErrorForInvalidPassword = ref<boolean>(false);
 const errorForInvalidPassword = ref<string>("");
+const showErrorForLogin = ref<boolean>(false);
+const errorForLogin = ref<string>("");
 const showLoader = ref<boolean>(false);
 
 onMounted((): void => {
@@ -141,13 +152,19 @@ const login = async (): Promise<void> => {
 
         localStorage.setItem("UserId", data.data.userId);
         localStorage.setItem("Username", data.data.username);
-        localStorage.setItem("UserGrade", data.data.userGrade);
         localStorage.setItem("JwtToken", data.data.token);
 
         router.push({ path: "/main" });
         window.location.reload();
       } else {
         showLoader.value = false;
+
+        showErrorForLogin.value = true;
+        errorForLogin.value = data.message;
+
+        setTimeout(() => {
+          showErrorForLogin.value = false;
+        }, 3000);
       }
     } else {
       showErrorForInvalidPassword.value = true;

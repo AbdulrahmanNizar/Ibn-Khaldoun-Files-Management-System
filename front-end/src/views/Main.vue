@@ -16,33 +16,45 @@
     <div
       class="w-100 row d-flex flex-md-row flex-column justify-content-around align-items-center p-3 mt-3"
     >
-      <router-link
-        :to="{ path: '/firstTirm' }"
-        class="btn btn-primary btn-lg p-2 col-md-4 col-6 mt-3 tirms-buttons d-md-none d-block"
-      >
-        الفصل الدراسي الاول
-      </router-link>
+      <transition name="appearFromTop">
+        <router-link
+          v-if="showFirstButton"
+          :to="{ path: '/firstTirm' }"
+          class="btn btn-primary btn-lg p-2 col-md-4 col-6 mt-3 tirms-buttons d-md-none d-block"
+        >
+          الفصل الدراسي الاول
+        </router-link>
+      </transition>
 
-      <router-link
-        to=""
-        class="btn btn-primary btn-lg p-2 col-md-4 col-6 mx-1 mt-3 tirms-buttons"
-      >
-        الفصل الدراسي الثاني
-      </router-link>
+      <transition name="appearFromTop">
+        <router-link
+          v-if="showSecondButton"
+          to=""
+          class="btn btn-primary btn-lg p-2 col-md-4 col-6 mx-1 mt-3 tirms-buttons"
+        >
+          الفصل الدراسي الثاني
+        </router-link>
+      </transition>
 
-      <router-link
-        :to="{ path: '/firstTirm' }"
-        class="btn btn-primary btn-lg p-2 col-md-4 col-6 mt-3 tirms-buttons d-md-block d-none"
-      >
-        الفصل الدراسي الاول
-      </router-link>
+      <transition name="appearFromTop">
+        <router-link
+          v-if="showFirstButton"
+          :to="{ path: '/firstTirm' }"
+          class="btn btn-primary btn-lg p-2 col-md-4 col-6 mt-3 tirms-buttons d-md-block d-none"
+        >
+          الفصل الدراسي الاول
+        </router-link>
+      </transition>
 
-      <router-link
-        to=""
-        class="btn btn-primary btn-lg p-2 col-md-4 col-6 mt-3 tirms-buttons"
-      >
-        الفصل الدراسي الثالث
-      </router-link>
+      <transition name="appearFromTop">
+        <router-link
+          v-if="showThirdButton"
+          to=""
+          class="btn btn-primary btn-lg p-2 col-md-4 col-6 mt-3 tirms-buttons"
+        >
+          الفصل الدراسي الثالث
+        </router-link>
+      </transition>
     </div>
   </div>
 </template>
@@ -52,18 +64,60 @@ import { ref } from "vue";
 import NavBarForMainSites from "@/components/NavBarForMainSites.vue";
 
 const username = ref<string | null>(localStorage.getItem("Username"));
+const showFirstButton = ref<boolean>(false);
+const showSecondButton = ref<boolean>(false);
+const showThirdButton = ref<boolean>(false);
+
+setTimeout(() => {
+  showFirstButton.value = true;
+  setTimeout(() => {
+    showSecondButton.value = true;
+    setTimeout(() => {
+      showThirdButton.value = true;
+    }, 500);
+  }, 500);
+}, 700);
 </script>
 
 <style>
 .tirms-buttons {
-  transition: 0.8s ease;
+  transition: 0.7s ease;
 }
 
 .tirms-buttons:hover {
   box-shadow: 5px 1px 50px blue;
+  transform: scale(1.1);
 }
 
 #parent-element {
-  background-image: linear-gradient(to right bottom, white, rgb(234, 142, 240));
+  background-image: linear-gradient(to left bottom, white, rgb(234, 142, 240));
+}
+
+.appearFromTop-enter-from {
+  opacity: 0;
+  transform: translateY(-30px);
+}
+
+.appearFromTop-enter-to {
+  opacity: 1;
+  transform: translateY(0px);
+}
+
+.appearFromTop-enter-active {
+  transition: 0.7s ease;
+}
+
+.appearFromTop-leave-from {
+  opacity: 1;
+  transform: translateY(0px);
+}
+
+.appearFromTop-leave-to {
+  opacity: 0;
+  transform: translateY(-30px);
+}
+
+.appearFromTop-leave-active {
+  transition: 0.7s ease;
 }
 </style>
