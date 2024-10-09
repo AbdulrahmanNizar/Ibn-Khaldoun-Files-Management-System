@@ -4,8 +4,15 @@ import NotFound from "@/views/NotFound.vue";
 import SignUp from "@/views/SignUp.vue";
 import FirstTirm from "@/views/FirstTirm.vue";
 import { createRouter, createWebHistory, RouteRecordRaw } from "vue-router";
+import SecondTirm from "@/views/SecondTirm.vue";
+import ThirdTirm from "@/views/ThirdTirm.vue";
+import Files from "@/views/Files.vue";
 
 const routes: Array<RouteRecordRaw> = [
+  {
+    path: "/",
+    redirect: "/main",
+  },
   {
     name: "SignUp",
     path: "/signup",
@@ -28,6 +35,30 @@ const routes: Array<RouteRecordRaw> = [
     name: "FirstTirm",
     path: "/firstTirm",
     component: FirstTirm,
+    meta: {
+      needsToken: localStorage.getItem("JwtToken") ? false : true,
+    },
+  },
+  {
+    name: "SecondTirm",
+    path: "/secondTirm",
+    component: SecondTirm,
+    meta: {
+      needsToken: localStorage.getItem("JwtToken") ? false : true,
+    },
+  },
+  {
+    name: "ThirdTirm",
+    path: "/thirdTirm",
+    component: ThirdTirm,
+    meta: {
+      needsToken: localStorage.getItem("JwtToken") ? false : true,
+    },
+  },
+  {
+    name: "Files",
+    path: "/files/:tirm/:subject",
+    component: Files,
     meta: {
       needsToken: localStorage.getItem("JwtToken") ? false : true,
     },

@@ -4,11 +4,13 @@ import { createStore } from "vuex";
 export default createStore({
   state: {
     userId: <string>localStorage.getItem("UserId"),
+    userInfo: <any>[],
+    userGrade: <string>"",
   },
   getters: {},
   mutations: {},
   actions: {
-    async logout(): Promise<void> {
+    async logout(context, payload): Promise<void> {
       try {
         const requestOptions: RequestOptionsInterface | any = {
           method: "PATCH",

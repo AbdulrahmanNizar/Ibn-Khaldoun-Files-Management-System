@@ -18,7 +18,7 @@
         <h3 class="my-2 w-100 text-center">تسجيل الدخول</h3>
         <transition name="fadeError">
           <div
-            class="alert alert-danger w-100 text-center"
+            class="alert alert-danger w-100 text-center mt-2"
             role="alert"
             v-if="showErrorForInvalidPassword"
           >
@@ -27,7 +27,7 @@
         </transition>
         <transition name="fadeError">
           <div
-            class="alert alert-danger w-100 text-center"
+            class="alert alert-danger w-100 text-center mt-2"
             role="alert"
             v-if="showErrorForLogin"
           >
