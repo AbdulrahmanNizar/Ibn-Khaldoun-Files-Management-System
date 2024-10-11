@@ -4,6 +4,7 @@ import { AppService } from './app.service';
 import { RegistrationModule } from './registration/registration.module';
 import { MongooseModule } from '@nestjs/mongoose';
 import { UsersManagementModule } from './users-management/users-management.module';
+import { FilesManagementModule } from './files-management/files-management.module';
 
 @Module({
   imports: [
@@ -12,6 +13,7 @@ import { UsersManagementModule } from './users-management/users-management.modul
     ),
     RegistrationModule,
     UsersManagementModule,
+    FilesManagementModule,
   ],
   controllers: [AppController],
   providers: [AppService],
