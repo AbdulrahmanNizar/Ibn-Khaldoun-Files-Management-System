@@ -7,6 +7,7 @@ import { CreateFileDto } from './dto/CreateFileDto';
 import { date } from 'src/helpers/Date';
 import { time } from 'src/helpers/Time';
 import { GetFilesDto } from './dto/GetFilesDto';
+import { GetFileInfoDto } from './dto/GetFileInfoDto';
 
 @Injectable()
 export class FilesManagementService {
@@ -32,6 +33,22 @@ export class FilesManagementService {
       return {
         successMessage: 'تم انشاء الملف بنجاح',
         statusCode: 201,
+      };
+    } catch (err) {
+      throw new HttpException(err, err.status);
+    }
+  }
+
+  async getFileInfo(
+    requestInfo: GetFileInfoDto,
+  ): Promise<SuccessResponseObjectDto | void> {
+    try {
+      const fileInDB = await this.fileModel.find({ _id: requestInfo.fileId });
+
+      return {
+        successMessage: 'تم الحصول على معلومات الملف بنجاح',
+        statusCode: 200,
+        data: fileInDB[0],
       };
     } catch (err) {
       throw new HttpException(err, err.status);

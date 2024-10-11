@@ -1,6 +1,6 @@
 const currentYear: number = new Date().getFullYear();
 
-const currentMonth: number = new Date().getMonth();
+const currentMonth: number = new Date().getMonth() + 1;
 
 const today: number = new Date().getDate();
 
