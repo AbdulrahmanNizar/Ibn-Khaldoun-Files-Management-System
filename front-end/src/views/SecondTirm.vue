@@ -6,7 +6,7 @@
       class="w-100 mt-2 d-flex flex-column justify-content-end align-items-end p-3"
     >
       <h3 class="mb-3 fs-2 me-4 text-end">
-        مرحبا بك في ملفات مواد الفصل الدراسي الاول
+        مرحبا بك في ملفات مواد الفصل الدراسي الثاني
       </h3>
 
       <h3 class="mb-3 mt-2 fs-4 me-4 text-end">
@@ -25,7 +25,7 @@
       >
         <router-link
           v-for="subject in firstGradeSubjects"
-          :to="{ path: '/files/firstTirm/' + subject.en }"
+          :to="{ path: '/files/secondTirm/' + subject.en }"
           class="btn btn-primary btn-lg"
           v-motion
           :initial="{ opacity: 0, y: 150 }"
@@ -39,7 +39,7 @@
       >
         <router-link
           v-for="subject in secondGradeSubjects"
-          :to="{ path: '/files/firstTirm/' + subject.en }"
+          :to="{ path: '/files/secondTirm/' + subject.en }"
           class="btn btn-primary btn-lg"
           v-motion
           :initial="{ opacity: 0, y: 150 }"
@@ -53,7 +53,7 @@
       >
         <router-link
           v-for="subject in thirdGradeSubjects"
-          :to="{ path: '/files/firstTirm/' + subject.en }"
+          :to="{ path: '/files/secondTirm/' + subject.en }"
           class="btn btn-primary btn-lg"
           v-motion
           :initial="{ opacity: 0, y: 150 }"
@@ -67,7 +67,7 @@
       >
         <router-link
           v-for="subject in forthGradeSubjects"
-          :to="{ path: '/files/firstTirm/' + subject.en }"
+          :to="{ path: '/files/secondTirm/' + subject.en }"
           class="btn btn-primary btn-lg"
           v-motion
           :initial="{ opacity: 0, y: 150 }"
@@ -81,7 +81,7 @@
       >
         <router-link
           v-for="subject in fifthGradeSubjects"
-          :to="{ path: '/files/firstTirm/' + subject.en }"
+          :to="{ path: '/files/secondTirm/' + subject.en }"
           class="btn btn-primary btn-lg"
           v-motion
           :initial="{ opacity: 0, y: 150 }"
@@ -95,7 +95,7 @@
       >
         <router-link
           v-for="subject in sixthGradeSubjects"
-          :to="{ path: '/files/firstTirm/' + subject.en }"
+          :to="{ path: '/files/secondTirm/' + subject.en }"
           class="btn btn-primary btn-lg"
           v-motion
           :initial="{ opacity: 0, y: 150 }"
@@ -109,7 +109,7 @@
       >
         <router-link
           v-for="subject in seventhGradeSubjects"
-          :to="{ path: '/files/firstTirm/' + subject.en }"
+          :to="{ path: '/files/secondTirm/' + subject.en }"
           class="btn btn-primary btn-lg"
           v-motion
           :initial="{ opacity: 0, y: 150 }"
@@ -123,7 +123,7 @@
       >
         <router-link
           v-for="subject in eighthGradeSubjects"
-          :to="{ path: '/files/firstTirm/' + subject.en }"
+          :to="{ path: '/files/secondTirm/' + subject.en }"
           class="btn btn-primary btn-lg"
           v-motion
           :initial="{ opacity: 0, y: 150 }"
@@ -137,7 +137,7 @@
       >
         <router-link
           v-for="subject in ninthGradeSubjects"
-          :to="{ path: '/files/firstTirm/' + subject.en }"
+          :to="{ path: '/files/secondTirm/' + subject.en }"
           class="btn btn-primary btn-lg"
           v-motion
           :initial="{ opacity: 0, y: 150 }"
@@ -152,7 +152,7 @@
       >
         <router-link
           v-for="subject in firstGradeSubjects"
-          :to="{ path: '/files/firstTirm/' + subject.en }"
+          :to="{ path: '/files/secondTirm/' + subject.en }"
           class="btn btn-primary btn-lg"
           v-motion-fade
           >{{ subject.ar }}</router-link
@@ -164,7 +164,7 @@
       >
         <router-link
           v-for="subject in secondGradeSubjects"
-          :to="{ path: '/files/firstTirm/' + subject.en }"
+          :to="{ path: '/files/secondTirm/' + subject.en }"
           class="btn btn-primary btn-lg"
           v-motion-fade
           >{{ subject.ar }}</router-link
@@ -176,7 +176,7 @@
       >
         <router-link
           v-for="subject in thirdGradeSubjects"
-          :to="{ path: '/files/firstTirm/' + subject.en }"
+          :to="{ path: '/files/secondTirm/' + subject.en }"
           class="btn btn-primary btn-lg"
           v-motion-fade
           >{{ subject.ar }}</router-link
@@ -188,7 +188,7 @@
       >
         <router-link
           v-for="subject in forthGradeSubjects"
-          :to="{ path: '/files/firstTirm/' + subject.en }"
+          :to="{ path: '/files/secondTirm/' + subject.en }"
           class="btn btn-primary btn-lg"
           v-motion-fade
           >{{ subject.ar }}</router-link
@@ -200,7 +200,7 @@
       >
         <router-link
           v-for="subject in fifthGradeSubjects"
-          :to="{ path: '/files/firstTirm/' + subject.en }"
+          :to="{ path: '/files/secondTirm/' + subject.en }"
           class="btn btn-primary btn-lg"
           v-motion-fade
           >{{ subject.ar }}</router-link
@@ -212,7 +212,7 @@
       >
         <router-link
           v-for="subject in sixthGradeSubjects"
-          :to="{ path: '/files/firstTirm/' + subject.en }"
+          :to="{ path: '/files/secondTirm/' + subject.en }"
           class="btn btn-primary btn-lg"
           v-motion-fade
           >{{ subject.ar }}</router-link
@@ -224,7 +224,7 @@
       >
         <router-link
           v-for="subject in seventhGradeSubjects"
-          :to="{ path: '/files/firstTirm/' + subject.en }"
+          :to="{ path: '/files/secondTirm/' + subject.en }"
           class="btn btn-primary btn-lg"
           v-motion-fade
           >{{ subject.ar }}</router-link
@@ -236,7 +236,7 @@
       >
         <router-link
           v-for="subject in eighthGradeSubjects"
-          :to="{ path: '/files/firstTirm/' + subject.en }"
+          :to="{ path: '/files/secondTirm/' + subject.en }"
           class="btn btn-primary btn-lg"
           v-motion-fade
           >{{ subject.ar }}</router-link
@@ -248,7 +248,7 @@
       >
         <router-link
           v-for="subject in ninthGradeSubjects"
-          :to="{ path: '/files/firstTirm/' + subject.en }"
+          :to="{ path: '/files/secondTirm/' + subject.en }"
           class="btn btn-primary btn-lg"
           v-motion-fade
           >{{ subject.ar }}</router-link

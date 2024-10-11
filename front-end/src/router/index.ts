@@ -7,6 +7,7 @@ import { createRouter, createWebHistory, RouteRecordRaw } from "vue-router";
 import SecondTirm from "@/views/SecondTirm.vue";
 import ThirdTirm from "@/views/ThirdTirm.vue";
 import Files from "@/views/Files.vue";
+import CreateFile from "@/views/CreateFile.vue";
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -59,6 +60,14 @@ const routes: Array<RouteRecordRaw> = [
     name: "Files",
     path: "/files/:tirm/:subject",
     component: Files,
+    meta: {
+      needsToken: localStorage.getItem("JwtToken") ? false : true,
+    },
+  },
+  {
+    name: "CreateFile",
+    path: "/createFile/:tirm/:subject",
+    component: CreateFile,
     meta: {
       needsToken: localStorage.getItem("JwtToken") ? false : true,
     },

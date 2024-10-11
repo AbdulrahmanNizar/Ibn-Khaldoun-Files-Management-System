@@ -8,13 +8,13 @@
       <div class="d-flex flex-row justify-content-start align-items-start ms-5">
         <router-link
           class="btn btn-primary d-flex flex-row justify-content-center align-items-center"
-          to=""
+          :to="{ path: '/createFile/' + tirm + '/' + subject }"
           ><i class="bi bi-plus-circle me-1"></i> اضافة ملف جديد
         </router-link>
       </div>
 
       <h3 class="mb-3 fs-2 me-4 text-end">
-        مرحبا بك في ملفات مادة {{ subjectInArabic }}
+        مرحبا بك في ملفات مادة {{ subjectNameInArabic }}
       </h3>
     </div>
 
@@ -32,6 +32,5 @@ const router = useRouter();
 const route = useRoute();
 const subject = ref<string | any>(route.params.subject);
 const tirm = ref<string | any>(route.params.tirm);
-
-const subjectInArabic = getSubjectNameInArabic(subject.value);
+const subjectNameInArabic = getSubjectNameInArabic(subject.value);
 </script>

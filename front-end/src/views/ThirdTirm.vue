@@ -25,12 +25,12 @@
       >
         <router-link
           v-for="subject in firstGradeSubjects"
-          :to="{ path: '/' + subject }"
+          :to="{ path: '/files/thirdTrim/' + subject.en }"
           class="btn btn-primary btn-lg"
           v-motion
           :initial="{ opacity: 0, y: 150 }"
           :visibleOnce="{ opacity: 1, y: 0 }"
-          >{{ subject }}</router-link
+          >{{ subject.ar }}</router-link
         >
       </div>
       <div
@@ -39,12 +39,12 @@
       >
         <router-link
           v-for="subject in secondGradeSubjects"
-          :to="{ path: '/' + subject }"
+          :to="{ path: '/files/thirdTrim/' + subject.en }"
           class="btn btn-primary btn-lg"
           v-motion
           :initial="{ opacity: 0, y: 150 }"
           :visibleOnce="{ opacity: 1, y: 0 }"
-          >{{ subject }}</router-link
+          >{{ subject.ar }}</router-link
         >
       </div>
       <div
@@ -53,12 +53,12 @@
       >
         <router-link
           v-for="subject in thirdGradeSubjects"
-          :to="{ path: '/' + subject }"
+          :to="{ path: '/files/thirdTrim/' + subject.en }"
           class="btn btn-primary btn-lg"
           v-motion
           :initial="{ opacity: 0, y: 150 }"
           :visibleOnce="{ opacity: 1, y: 0 }"
-          >{{ subject }}</router-link
+          >{{ subject.ar }}</router-link
         >
       </div>
       <div
@@ -67,12 +67,12 @@
       >
         <router-link
           v-for="subject in forthGradeSubjects"
-          :to="{ path: '/' + subject }"
+          :to="{ path: '/files/thirdTrim/' + subject.en }"
           class="btn btn-primary btn-lg"
           v-motion
           :initial="{ opacity: 0, y: 150 }"
           :visibleOnce="{ opacity: 1, y: 0 }"
-          >{{ subject }}</router-link
+          >{{ subject.ar }}</router-link
         >
       </div>
       <div
@@ -81,12 +81,12 @@
       >
         <router-link
           v-for="subject in fifthGradeSubjects"
-          :to="{ path: '/' + subject }"
+          :to="{ path: '/files/thirdTrim/' + subject.en }"
           class="btn btn-primary btn-lg"
           v-motion
           :initial="{ opacity: 0, y: 150 }"
           :visibleOnce="{ opacity: 1, y: 0 }"
-          >{{ subject }}</router-link
+          >{{ subject.ar }}</router-link
         >
       </div>
       <div
@@ -95,12 +95,12 @@
       >
         <router-link
           v-for="subject in sixthGradeSubjects"
-          :to="{ path: '/' + subject }"
+          :to="{ path: '/files/thirdTrim/' + subject.en }"
           class="btn btn-primary btn-lg"
           v-motion
           :initial="{ opacity: 0, y: 150 }"
           :visibleOnce="{ opacity: 1, y: 0 }"
-          >{{ subject }}</router-link
+          >{{ subject.ar }}</router-link
         >
       </div>
       <div
@@ -109,12 +109,12 @@
       >
         <router-link
           v-for="subject in seventhGradeSubjects"
-          :to="{ path: '/' + subject }"
+          :to="{ path: '/files/thirdTrim/' + subject.en }"
           class="btn btn-primary btn-lg"
           v-motion
           :initial="{ opacity: 0, y: 150 }"
           :visibleOnce="{ opacity: 1, y: 0 }"
-          >{{ subject }}</router-link
+          >{{ subject.ar }}</router-link
         >
       </div>
       <div
@@ -123,12 +123,12 @@
       >
         <router-link
           v-for="subject in eighthGradeSubjects"
-          :to="{ path: '/' + subject }"
+          :to="{ path: '/files/thirdTrim/' + subject.en }"
           class="btn btn-primary btn-lg"
           v-motion
           :initial="{ opacity: 0, y: 150 }"
           :visibleOnce="{ opacity: 1, y: 0 }"
-          >{{ subject }}</router-link
+          >{{ subject.ar }}</router-link
         >
       </div>
       <div
@@ -137,12 +137,12 @@
       >
         <router-link
           v-for="subject in ninthGradeSubjects"
-          :to="{ path: '/' + subject }"
+          :to="{ path: '/files/thirdTrim/' + subject.en }"
           class="btn btn-primary btn-lg"
           v-motion
           :initial="{ opacity: 0, y: 150 }"
           :visibleOnce="{ opacity: 1, y: 0 }"
-          >{{ subject }}</router-link
+          >{{ subject.ar }}</router-link
         >
       </div>
 
@@ -152,10 +152,10 @@
       >
         <router-link
           v-for="subject in firstGradeSubjects"
-          :to="{ path: '/' + subject }"
+          :to="{ path: '/files/thirdTrim/' + subject.en }"
           class="btn btn-primary btn-lg"
           v-motion-fade
-          >{{ subject }}</router-link
+          >{{ subject.ar }}</router-link
         >
       </div>
       <div
@@ -164,10 +164,10 @@
       >
         <router-link
           v-for="subject in secondGradeSubjects"
-          :to="{ path: '/' + subject }"
+          :to="{ path: '/files/thirdTrim/' + subject.en }"
           class="btn btn-primary btn-lg"
           v-motion-fade
-          >{{ subject }}</router-link
+          >{{ subject.ar }}</router-link
         >
       </div>
       <div
@@ -176,10 +176,10 @@
       >
         <router-link
           v-for="subject in thirdGradeSubjects"
-          :to="{ path: '/' + subject }"
+          :to="{ path: '/files/thirdTrim/' + subject.en }"
           class="btn btn-primary btn-lg"
           v-motion-fade
-          >{{ subject }}</router-link
+          >{{ subject.ar }}</router-link
         >
       </div>
       <div
@@ -188,10 +188,10 @@
       >
         <router-link
           v-for="subject in forthGradeSubjects"
-          :to="{ path: '/' + subject }"
+          :to="{ path: '/files/thirdTrim/' + subject.en }"
           class="btn btn-primary btn-lg"
           v-motion-fade
-          >{{ subject }}</router-link
+          >{{ subject.ar }}</router-link
         >
       </div>
       <div
@@ -200,10 +200,10 @@
       >
         <router-link
           v-for="subject in fifthGradeSubjects"
-          :to="{ path: '/' + subject }"
+          :to="{ path: '/files/thirdTrim/' + subject.en }"
           class="btn btn-primary btn-lg"
           v-motion-fade
-          >{{ subject }}</router-link
+          >{{ subject.ar }}</router-link
         >
       </div>
       <div
@@ -212,10 +212,10 @@
       >
         <router-link
           v-for="subject in sixthGradeSubjects"
-          :to="{ path: '/' + subject }"
+          :to="{ path: '/files/thirdTrim/' + subject.en }"
           class="btn btn-primary btn-lg"
           v-motion-fade
-          >{{ subject }}</router-link
+          >{{ subject.ar }}</router-link
         >
       </div>
       <div
@@ -224,10 +224,10 @@
       >
         <router-link
           v-for="subject in seventhGradeSubjects"
-          :to="{ path: '/' + subject }"
+          :to="{ path: '/files/thirdTrim/' + subject.en }"
           class="btn btn-primary btn-lg"
           v-motion-fade
-          >{{ subject }}</router-link
+          >{{ subject.ar }}</router-link
         >
       </div>
       <div
@@ -236,10 +236,10 @@
       >
         <router-link
           v-for="subject in eighthGradeSubjects"
-          :to="{ path: '/' + subject }"
+          :to="{ path: '/files/thirdTrim/' + subject.en }"
           class="btn btn-primary btn-lg"
           v-motion-fade
-          >{{ subject }}</router-link
+          >{{ subject.ar }}</router-link
         >
       </div>
       <div
@@ -248,10 +248,10 @@
       >
         <router-link
           v-for="subject in ninthGradeSubjects"
-          :to="{ path: '/' + subject }"
+          :to="{ path: '/files/thirdTrim/' + subject.en }"
           class="btn btn-primary btn-lg"
           v-motion-fade
-          >{{ subject }}</router-link
+          >{{ subject.ar }}</router-link
         >
       </div>
     </div>
@@ -288,7 +288,7 @@ const getUserInfo = async (): Promise<void> => {
   }
 };
 
-const firstGradeSubjects = ref<object[]>([
+const firstGradeSubjects = ref<any[]>([
   {
     en: "math",
     ar: "الرياضيات",
@@ -319,7 +319,7 @@ const firstGradeSubjects = ref<object[]>([
   },
 ]);
 
-const secondGradeSubjects = ref<object[]>([
+const secondGradeSubjects = ref<any[]>([
   {
     en: "math",
     ar: "الرياضيات",
@@ -350,7 +350,7 @@ const secondGradeSubjects = ref<object[]>([
   },
 ]);
 
-const thirdGradeSubjects = ref<object[]>([
+const thirdGradeSubjects = ref<any[]>([
   {
     en: "math",
     ar: "الرياضيات",
@@ -381,7 +381,7 @@ const thirdGradeSubjects = ref<object[]>([
   },
 ]);
 
-const forthGradeSubjects = ref<object[]>([
+const forthGradeSubjects = ref<any[]>([
   {
     en: "math",
     ar: "الرياضيات",
@@ -416,7 +416,7 @@ const forthGradeSubjects = ref<object[]>([
   },
 ]);
 
-const fifthGradeSubjects = ref<object[]>([
+const fifthGradeSubjects = ref<any[]>([
   {
     en: "math",
     ar: "الرياضيات",
@@ -455,7 +455,7 @@ const fifthGradeSubjects = ref<object[]>([
   },
 ]);
 
-const sixthGradeSubjects = ref<object[]>([
+const sixthGradeSubjects = ref<any[]>([
   {
     en: "math",
     ar: "الرياضيات",
@@ -494,7 +494,7 @@ const sixthGradeSubjects = ref<object[]>([
   },
 ]);
 
-const seventhGradeSubjects = ref<object[]>([
+const seventhGradeSubjects = ref<any[]>([
   {
     en: "math",
     ar: "الرياضيات",
@@ -533,7 +533,7 @@ const seventhGradeSubjects = ref<object[]>([
   },
 ]);
 
-const eighthGradeSubjects = ref<object[]>([
+const eighthGradeSubjects = ref<any[]>([
   {
     en: "math",
     ar: "الرياضيات",
@@ -572,7 +572,7 @@ const eighthGradeSubjects = ref<object[]>([
   },
 ]);
 
-const ninthGradeSubjects = ref<object[]>([
+const ninthGradeSubjects = ref<any[]>([
   {
     en: "math",
     ar: "الرياضيات",
