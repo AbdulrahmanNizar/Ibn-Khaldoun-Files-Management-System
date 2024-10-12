@@ -27,5 +27,8 @@ export const getSubjectNameInArabic = (subjectName: string) => {
     case subjectName == "art":
       return "الفنية";
       break;
+    case subjectName == "life skills":
+      return "الحياتية";
+      break;
   }
 };

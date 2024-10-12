@@ -12,7 +12,7 @@
       />
 
       <div
-        class="d-flex flex-column justify-content-center align-items-center border border-primary border-2 rounded p-3 shadow"
+        class="d-flex flex-column justify-content-center align-items-center border border-primary border-2 rounded p-3 shadow mt-2"
         style="width: 60%"
       >
         <h3 class="my-2 w-100 text-center">انشاء حساب</h3>

@@ -1,5 +1,5 @@
 <template>
-  <nav class="navbar navbar-expand-lg bg-primary bg-gradient mb-5">
+  <nav class="navbar navbar-expand-lg bg-primary bg-gradient mb-3">
     <div
       class="container-fluid d-flex flex-column justify-content-center align-items-center w-100"
     >
