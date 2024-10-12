@@ -8,6 +8,8 @@ import { date } from 'src/helpers/Date';
 import { time } from 'src/helpers/Time';
 import { GetFilesDto } from './dto/GetFilesDto';
 import { GetFileInfoDto } from './dto/GetFileInfoDto';
+import { DeleteFileDto } from './dto/DeleteFileDto';
+import { UpdateFileDto } from './dto/UpdateFileDto';
 
 @Injectable()
 export class FilesManagementService {
@@ -61,6 +63,8 @@ export class FilesManagementService {
     try {
       const userFilesInDB = await this.fileModel.find({
         userId: requestInfo.userId,
+        tirm: requestInfo.tirm,
+        subject: requestInfo.subject,
       });
 
       return {
@@ -68,6 +72,62 @@ export class FilesManagementService {
         statusCode: 200,
         data: userFilesInDB,
       };
+    } catch (err) {
+      throw new HttpException(err, err.status);
+    }
+  }
+
+  async deleteFile(
+    requestInfo: DeleteFileDto,
+  ): Promise<SuccessResponseObjectDto | void> {
+    try {
+      await this.fileModel.deleteOne({ _id: requestInfo.fileId });
+
+      return {
+        successMessage: 'تم حذف الملف بنجاح',
+        statusCode: 200,
+      };
+    } catch (err) {
+      throw new HttpException(err, err.status);
+    }
+  }
+
+  async updateFile(
+    requestInfo: UpdateFileDto,
+  ): Promise<SuccessResponseObjectDto | void> {
+    try {
+      if (requestInfo.file != '') {
+        await this.fileModel.updateOne(
+          { _id: requestInfo.fileId },
+          {
+            $set: {
+              fileTitle: requestInfo.fileTitle,
+              fileDescription: requestInfo.fileDescription,
+              file: requestInfo.file,
+            },
+          },
+        );
+
+        return {
+          successMessage: 'تم التعديل على الملف بنجاح',
+          statusCode: 200,
+        };
+      } else {
+        await this.fileModel.updateOne(
+          { _id: requestInfo.fileId },
+          {
+            $set: {
+              fileTitle: requestInfo.fileTitle,
+              fileDescription: requestInfo.fileDescription,
+            },
+          },
+        );
+
+        return {
+          successMessage: 'تم التعديل على الملف بنجاح',
+          statusCode: 200,
+        };
+      }
     } catch (err) {
       throw new HttpException(err, err.status);
     }
