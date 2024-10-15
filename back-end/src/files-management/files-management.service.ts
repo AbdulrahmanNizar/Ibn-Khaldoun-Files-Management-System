@@ -10,32 +10,52 @@ import { GetFilesDto } from './dto/GetFilesDto';
 import { GetFileInfoDto } from './dto/GetFileInfoDto';
 import { DeleteFileDto } from './dto/DeleteFileDto';
 import { UpdateFileDto } from './dto/UpdateFileDto';
+import { userFile } from 'src/user-files-management/user-files-management.model';
 
 @Injectable()
 export class FilesManagementService {
-  constructor(@InjectModel('File') private readonly fileModel: Model<file>) {}
+  constructor(
+    @InjectModel('File') private readonly fileModel: Model<file>,
+    @InjectModel('UserFile') private readonly userFileModel: Model<userFile>,
+  ) {}
 
   async createFile(
     requestInfo: CreateFileDto,
   ): Promise<SuccessResponseObjectDto | void> {
     try {
-      const newFile = new this.fileModel({
-        userId: requestInfo.userId,
-        fileTitle: requestInfo.fileTitle,
-        fileDescription: requestInfo.fileDescription,
-        file: requestInfo.file,
-        tirm: requestInfo.tirm,
-        subject: requestInfo.subject,
-        createdAtDate: date,
-        createdAtTime: time,
+      const userFileInDB: any = await this.userFileModel.find({
+        _id: requestInfo.userFileId,
       });
+      let fileBase64: any = '';
 
-      await newFile.save();
+      if (userFileInDB.length > 0) {
+        const reader = new FileReader();
 
-      return {
-        successMessage: 'تم انشاء الملف بنجاح',
-        statusCode: 201,
-      };
+        reader.addEventListener('load', () => {
+          fileBase64 = reader.result;
+        });
+
+        reader.readAsDataURL(userFileInDB[0].file);
+
+        const newFile = new this.fileModel({
+          userId: requestInfo.userId,
+          fileTitle: requestInfo.fileTitle,
+          fileDescription: requestInfo.fileDescription,
+          file: fileBase64,
+          tirm: requestInfo.tirm,
+          subject: requestInfo.subject,
+          createdAtDate: date,
+          createdAtTime: time,
+        });
+        await newFile.save();
+
+        return {
+          successMessage: 'تم انشاء الملف بنجاح',
+          statusCode: 201,
+        };
+      } else {
+        throw new HttpException('لم يتم العثور على الملف', 404);
+      }
     } catch (err) {
       throw new HttpException(err, err.status);
     }

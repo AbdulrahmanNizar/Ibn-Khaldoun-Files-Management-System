@@ -7,7 +7,12 @@ import {
   Patch,
   Post,
   Res,
+  UseInterceptors,
+  UploadedFile,
+  ParseFilePipe,
+  MaxFileSizeValidator,
 } from '@nestjs/common';
+import { FileInterceptor } from '@nestjs/platform-express';
 import { FilesManagementService } from './files-management.service';
 import { CreateFileDto } from './dto/CreateFileDto';
 import { SuccessResponseObjectDto } from 'src/dto/SuccessResponseObjectDto';
@@ -25,6 +30,8 @@ export class FilesManagementController {
   @Post('/createFile')
   async createFile(
     @Body() createFileDto: CreateFileDto,
+
+    file: Express.Multer.File,
     @Res() res,
   ): Promise<SuccessResponseObjectDto | void> {
     res
