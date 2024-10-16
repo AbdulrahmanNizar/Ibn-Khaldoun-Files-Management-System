@@ -3,7 +3,7 @@
     <NavBarForMainSites />
 
     <div
-      class="w-100 mt-2 d-flex flex-column justify-content-end align-items-end p-3"
+      class="w-100 mt-1 d-flex flex-column justify-content-end align-items-end p-3"
     >
       <h3 class="fs-2 me-4 text-end">
         مرحبا بك في ملفات مادة {{ subjectNameInArabic }}
@@ -12,7 +12,7 @@
       <hr class="w-100" />
 
       <div
-        class="d-flex flex-row justify-content-start align-items-start me-4 mt-2 btn-group w-50"
+        class="d-flex flex-row justify-content-start align-items-start me-4 mt-2 btn-group w-75"
       >
         <button
           class="btn btn-primary d-flex flex-row justify-content-center align-items-center"
@@ -31,7 +31,7 @@
     </div>
 
     <div
-      class="w-100 mt-3 p-3 d-flex flex-row justify-content-around align-items-center flex-wrap"
+      class="w-100 mt-1 p-3 d-flex flex-row justify-content-around align-items-center flex-wrap"
     >
       <div v-for="file in userFiles">
         <FileCard :fileId="file._id" />
@@ -54,6 +54,7 @@ const subject = ref<string | any>(route.params.subject);
 const tirm = ref<string | any>(route.params.tirm);
 const subjectNameInArabic = getSubjectNameInArabic(subject.value);
 const userFiles = ref<any>([]);
+const base64OfUserFiles = ref<string[]>([]);
 
 const getFiles = async (): Promise<void> => {
   try {

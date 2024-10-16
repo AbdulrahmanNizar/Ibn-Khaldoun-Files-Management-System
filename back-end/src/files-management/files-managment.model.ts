@@ -19,7 +19,7 @@ export interface file {
   userId: string;
   fileTitle: string;
   fileDescription: string;
-  file: string;
+  file: object;
   tirm: string;
   subject: string;
   createdAtTime: string;

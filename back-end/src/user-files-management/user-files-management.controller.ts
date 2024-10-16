@@ -3,6 +3,7 @@ import {
   MaxFileSizeValidator,
   Param,
   ParseFilePipe,
+  Patch,
   Post,
   Res,
   UploadedFile,
@@ -10,7 +11,7 @@ import {
 } from '@nestjs/common';
 import { UserFilesManagementService } from './user-files-management.service';
 import { SuccessResponseObjectDto } from 'src/dto/SuccessResponseObjectDto';
-import { UserFileDto } from './dto/UserFileDto';
+import { CreateUserFileDto } from './dto/CreateUserFileDto';
 import { FileInterceptor } from '@nestjs/platform-express';
 
 @Controller('user-files-management')
@@ -19,7 +20,7 @@ export class UserFilesManagementController {
     private readonly userFilesManagementService: UserFilesManagementService,
   ) {}
 
-  @Post('/saveUserFile/:userId')
+  @Post('/createUserFile/:userId')
   @UseInterceptors(FileInterceptor('file'))
   async saveUserFile(
     @UploadedFile(
@@ -28,13 +29,13 @@ export class UserFilesManagementController {
       }),
     )
     file: Express.Multer.File,
-    @Param() userFileDto: UserFileDto,
+    @Param() userFileDto: CreateUserFileDto,
     @Res() res,
   ): Promise<SuccessResponseObjectDto | void> {
     res
       .status(201)
       .json(
-        await this.userFilesManagementService.saveUserFile(userFileDto, file),
+        await this.userFilesManagementService.createUserFile(userFileDto, file),
       );
   }
 }

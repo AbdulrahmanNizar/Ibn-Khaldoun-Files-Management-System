@@ -33,7 +33,7 @@
         <router-link
           v-for="subject in firstGradeSubjects"
           :to="{ path: '/files/secondTirm/' + subject.en }"
-          class="btn btn-primary btn-lg"
+          class="btn btn-primary"
           v-motion
           :initial="{ opacity: 0, y: 150 }"
           :visibleOnce="{ opacity: 1, y: 0 }"
@@ -47,7 +47,7 @@
         <router-link
           v-for="subject in secondGradeSubjects"
           :to="{ path: '/files/secondTirm/' + subject.en }"
-          class="btn btn-primary btn-lg"
+          class="btn btn-primary"
           v-motion
           :initial="{ opacity: 0, y: 150 }"
           :visibleOnce="{ opacity: 1, y: 0 }"
@@ -61,7 +61,7 @@
         <router-link
           v-for="subject in thirdGradeSubjects"
           :to="{ path: '/files/secondTirm/' + subject.en }"
-          class="btn btn-primary btn-lg"
+          class="btn btn-primary"
           v-motion
           :initial="{ opacity: 0, y: 150 }"
           :visibleOnce="{ opacity: 1, y: 0 }"
@@ -75,7 +75,7 @@
         <router-link
           v-for="subject in forthGradeSubjects"
           :to="{ path: '/files/secondTirm/' + subject.en }"
-          class="btn btn-primary btn-lg"
+          class="btn btn-primary"
           v-motion
           :initial="{ opacity: 0, y: 150 }"
           :visibleOnce="{ opacity: 1, y: 0 }"
@@ -89,7 +89,7 @@
         <router-link
           v-for="subject in fifthGradeSubjects"
           :to="{ path: '/files/secondTirm/' + subject.en }"
-          class="btn btn-primary btn-lg"
+          class="btn btn-primary"
           v-motion
           :initial="{ opacity: 0, y: 150 }"
           :visibleOnce="{ opacity: 1, y: 0 }"
@@ -103,7 +103,7 @@
         <router-link
           v-for="subject in sixthGradeSubjects"
           :to="{ path: '/files/secondTirm/' + subject.en }"
-          class="btn btn-primary btn-lg"
+          class="btn btn-primary"
           v-motion
           :initial="{ opacity: 0, y: 150 }"
           :visibleOnce="{ opacity: 1, y: 0 }"
@@ -117,7 +117,7 @@
         <router-link
           v-for="subject in seventhGradeSubjects"
           :to="{ path: '/files/secondTirm/' + subject.en }"
-          class="btn btn-primary btn-lg"
+          class="btn btn-primary"
           v-motion
           :initial="{ opacity: 0, y: 150 }"
           :visibleOnce="{ opacity: 1, y: 0 }"
@@ -131,7 +131,7 @@
         <router-link
           v-for="subject in eighthGradeSubjects"
           :to="{ path: '/files/secondTirm/' + subject.en }"
-          class="btn btn-primary btn-lg"
+          class="btn btn-primary"
           v-motion
           :initial="{ opacity: 0, y: 150 }"
           :visibleOnce="{ opacity: 1, y: 0 }"
@@ -145,7 +145,7 @@
         <router-link
           v-for="subject in ninthGradeSubjects"
           :to="{ path: '/files/secondTirm/' + subject.en }"
-          class="btn btn-primary btn-lg"
+          class="btn btn-primary"
           v-motion
           :initial="{ opacity: 0, y: 150 }"
           :visibleOnce="{ opacity: 1, y: 0 }"
@@ -160,7 +160,7 @@
         <router-link
           v-for="subject in firstGradeSubjects"
           :to="{ path: '/files/secondTirm/' + subject.en }"
-          class="btn btn-primary btn-lg"
+          class="btn btn-primary"
           v-motion-fade
           >{{ subject.ar }}</router-link
         >
@@ -172,7 +172,7 @@
         <router-link
           v-for="subject in secondGradeSubjects"
           :to="{ path: '/files/secondTirm/' + subject.en }"
-          class="btn btn-primary btn-lg"
+          class="btn btn-primary"
           v-motion-fade
           >{{ subject.ar }}</router-link
         >
@@ -184,7 +184,7 @@
         <router-link
           v-for="subject in thirdGradeSubjects"
           :to="{ path: '/files/secondTirm/' + subject.en }"
-          class="btn btn-primary btn-lg"
+          class="btn btn-primary"
           v-motion-fade
           >{{ subject.ar }}</router-link
         >
@@ -196,7 +196,7 @@
         <router-link
           v-for="subject in forthGradeSubjects"
           :to="{ path: '/files/secondTirm/' + subject.en }"
-          class="btn btn-primary btn-lg"
+          class="btn btn-primary"
           v-motion-fade
           >{{ subject.ar }}</router-link
         >
@@ -208,7 +208,7 @@
         <router-link
           v-for="subject in fifthGradeSubjects"
           :to="{ path: '/files/secondTirm/' + subject.en }"
-          class="btn btn-primary btn-lg"
+          class="btn btn-primary"
           v-motion-fade
           >{{ subject.ar }}</router-link
         >
@@ -220,7 +220,7 @@
         <router-link
           v-for="subject in sixthGradeSubjects"
           :to="{ path: '/files/secondTirm/' + subject.en }"
-          class="btn btn-primary btn-lg"
+          class="btn btn-primary"
           v-motion-fade
           >{{ subject.ar }}</router-link
         >
@@ -232,7 +232,7 @@
         <router-link
           v-for="subject in seventhGradeSubjects"
           :to="{ path: '/files/secondTirm/' + subject.en }"
-          class="btn btn-primary btn-lg"
+          class="btn btn-primary"
           v-motion-fade
           >{{ subject.ar }}</router-link
         >
@@ -244,7 +244,7 @@
         <router-link
           v-for="subject in eighthGradeSubjects"
           :to="{ path: '/files/secondTirm/' + subject.en }"
-          class="btn btn-primary btn-lg"
+          class="btn btn-primary"
           v-motion-fade
           >{{ subject.ar }}</router-link
         >
@@ -256,7 +256,7 @@
         <router-link
           v-for="subject in ninthGradeSubjects"
           :to="{ path: '/files/secondTirm/' + subject.en }"
-          class="btn btn-primary btn-lg"
+          class="btn btn-primary"
           v-motion-fade
           >{{ subject.ar }}</router-link
         >

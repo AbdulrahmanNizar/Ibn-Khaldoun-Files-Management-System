@@ -26,22 +26,16 @@ export class FilesManagementService {
       const userFileInDB: any = await this.userFileModel.find({
         _id: requestInfo.userFileId,
       });
-      let fileBase64: any = '';
 
       if (userFileInDB.length > 0) {
-        const reader = new FileReader();
-
-        reader.addEventListener('load', () => {
-          fileBase64 = reader.result;
-        });
-
-        reader.readAsDataURL(userFileInDB[0].file);
-
         const newFile = new this.fileModel({
           userId: requestInfo.userId,
           fileTitle: requestInfo.fileTitle,
           fileDescription: requestInfo.fileDescription,
-          file: fileBase64,
+          file: {
+            buffer: userFileInDB[0].file.buffer,
+            type: userFileInDB[0].file.mimetype,
+          },
           tirm: requestInfo.tirm,
           subject: requestInfo.subject,
           createdAtDate: date,
@@ -116,38 +110,20 @@ export class FilesManagementService {
     requestInfo: UpdateFileDto,
   ): Promise<SuccessResponseObjectDto | void> {
     try {
-      if (requestInfo.file != '') {
-        await this.fileModel.updateOne(
-          { _id: requestInfo.fileId },
-          {
-            $set: {
-              fileTitle: requestInfo.fileTitle,
-              fileDescription: requestInfo.fileDescription,
-              file: requestInfo.file,
-            },
+      await this.fileModel.updateOne(
+        { _id: requestInfo.fileId },
+        {
+          $set: {
+            fileTitle: requestInfo.fileTitle,
+            fileDescription: requestInfo.fileDescription,
           },
-        );
+        },
+      );
 
-        return {
-          successMessage: 'تم التعديل على الملف بنجاح',
-          statusCode: 200,
-        };
-      } else {
-        await this.fileModel.updateOne(
-          { _id: requestInfo.fileId },
-          {
-            $set: {
-              fileTitle: requestInfo.fileTitle,
-              fileDescription: requestInfo.fileDescription,
-            },
-          },
-        );
-
-        return {
-          successMessage: 'تم التعديل على الملف بنجاح',
-          statusCode: 200,
-        };
-      }
+      return {
+        successMessage: 'تم التعديل على الملف بنجاح',
+        statusCode: 200,
+      };
     } catch (err) {
       throw new HttpException(err, err.status);
     }

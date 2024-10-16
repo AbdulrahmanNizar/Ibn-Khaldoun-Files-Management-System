@@ -14,7 +14,7 @@
     </div>
 
     <div
-      class="w-100 row d-flex flex-md-row flex-column justify-content-around align-items-center p-3 mt-3"
+      class="w-100 d-flex flex-md-row flex-column justify-content-around align-items-center p-3 mt-3 flex-wrap"
     >
       <router-link
         v-motion
@@ -96,10 +96,6 @@ const username = ref<string | null>(localStorage.getItem("Username"));
 }
 
 #parent-element {
-  background-image: linear-gradient(
-    to left bottom,
-    rgb(218, 196, 196),
-    rgb(234, 142, 240)
-  );
+  background-image: linear-gradient(to bottom, rgb(234, 142, 240), white);
 }
 </style>

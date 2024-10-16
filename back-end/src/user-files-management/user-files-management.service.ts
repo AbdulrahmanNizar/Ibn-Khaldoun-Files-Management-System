@@ -1,6 +1,6 @@
 import { HttpException, Injectable } from '@nestjs/common';
 import { SuccessResponseObjectDto } from 'src/dto/SuccessResponseObjectDto';
-import { UserFileDto } from './dto/UserFileDto';
+import { CreateUserFileDto } from './dto/CreateUserFileDto';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 import { userFile } from './user-files-management.model';
@@ -11,8 +11,8 @@ export class UserFilesManagementService {
     @InjectModel('UserFile') private readonly userFileModel: Model<userFile>,
   ) {}
 
-  async saveUserFile(
-    requestInfo: UserFileDto,
+  async createUserFile(
+    requestInfo: CreateUserFileDto,
     file: Express.Multer.File,
   ): Promise<SuccessResponseObjectDto | void> {
     try {

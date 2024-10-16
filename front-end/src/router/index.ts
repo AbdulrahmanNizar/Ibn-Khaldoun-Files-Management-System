@@ -8,6 +8,7 @@ import SecondTirm from "@/views/SecondTirm.vue";
 import ThirdTirm from "@/views/ThirdTirm.vue";
 import Files from "@/views/Files.vue";
 import CreateFile from "@/views/CreateFile.vue";
+import UpdateFile from "@/views/UpdateFile.vue";
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -71,6 +72,11 @@ const routes: Array<RouteRecordRaw> = [
     meta: {
       needsToken: localStorage.getItem("JwtToken") ? false : true,
     },
+  },
+  {
+    name: "UpdateFile",
+    path: "/updateFile/:tirm/:subject/:fileId",
+    component: UpdateFile,
   },
   {
     name: "NotFound",
