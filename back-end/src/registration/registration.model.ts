@@ -10,6 +10,7 @@ export const registrationSchema = new mongoose.Schema(
     grade: { type: String, required: true },
     class: { type: String, required: true },
     logged: { type: Boolean, required: true },
+    subscription: { type: Boolean, required: true },
   },
   { timestamps: true },
 );
@@ -24,4 +25,5 @@ export interface Registration {
   grade: string;
   class: string;
   logged: boolean;
+  subscription: boolean;
 }

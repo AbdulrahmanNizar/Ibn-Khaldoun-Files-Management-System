@@ -5,6 +5,8 @@ import { LoginUserDto } from './dto/LoginUserDto';
 import { SuccessResponseObjectDto } from 'src/dto/SuccessResponseObjectDto';
 import { ValidateUserToken } from './dto/ValidateUserToken';
 import { LogoutUserDto } from './dto/LogoutUserDto';
+import { CheckUserSubscriptionDto } from './dto/CheckUserSubscriptionDto';
+import { UpdateUserSubscriptionDto } from './dto/UpdateUserSubscriptionDto';
 
 @Controller('registration')
 export class RegistrationController {
@@ -42,5 +44,33 @@ export class RegistrationController {
     res
       .status(200)
       .json(this.registrationService.validateTheAuthToken(validateUserToken));
+  }
+
+  @Post('/checkUserSubscription')
+  async checkUserSubscription(
+    @Body() checkUserSubscription: CheckUserSubscriptionDto,
+    @Res() res,
+  ): Promise<SuccessResponseObjectDto | void> {
+    res
+      .status(200)
+      .json(
+        await this.registrationService.checkUserSubscription(
+          checkUserSubscription,
+        ),
+      );
+  }
+
+  @Patch('/updateUserSubscription')
+  async updateUserSubscription(
+    @Body() updateUserSubscription: UpdateUserSubscriptionDto,
+    @Res() res,
+  ): Promise<SuccessResponseObjectDto | void> {
+    res
+      .status(200)
+      .json(
+        await this.registrationService.updateUserSubscription(
+          updateUserSubscription,
+        ),
+      );
   }
 }
