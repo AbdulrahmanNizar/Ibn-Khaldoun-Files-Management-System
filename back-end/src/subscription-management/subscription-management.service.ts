@@ -43,7 +43,7 @@ export class SubscriptionManagementService {
       if (userInDB.length > 0) {
         await this.userModel.updateOne(
           { phoneNumber: requestInfo.userPhoneNumber },
-          { $set: { subscription: requestInfo.newUserSubscription } },
+          { $set: { subscription: true } },
         );
 
         return {
