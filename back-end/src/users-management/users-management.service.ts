@@ -1,15 +1,13 @@
 import { HttpException, Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
-import { Registration } from 'src/registration/registration.model';
+import { User } from 'src/registration/registration.model';
 import { GetUserInfoDto } from './dto/GetUserInfoDto';
 import { SuccessResponseObjectDto } from 'src/dto/SuccessResponseObjectDto';
 
 @Injectable()
 export class UsersManagementService {
-  constructor(
-    @InjectModel('User') private readonly userModel: Model<Registration>,
-  ) {}
+  constructor(@InjectModel('User') private readonly userModel: Model<User>) {}
 
   async getUserInfo(
     requestInfo: GetUserInfoDto,

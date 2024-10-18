@@ -1,6 +1,6 @@
 import * as mongoose from 'mongoose';
 
-export const registrationSchema = new mongoose.Schema(
+export const userSchema = new mongoose.Schema(
   {
     username: { type: String, required: true },
     email: { type: String, required: false },
@@ -15,7 +15,7 @@ export const registrationSchema = new mongoose.Schema(
   { timestamps: true },
 );
 
-export interface Registration {
+export interface User {
   id: string;
   username: string;
   email: string;

@@ -10,7 +10,7 @@ import { GetFilesDto } from './dto/GetFilesDto';
 import { GetFileInfoDto } from './dto/GetFileInfoDto';
 import { DeleteFileDto } from './dto/DeleteFileDto';
 import { UpdateFileDto } from './dto/UpdateFileDto';
-import { userFile } from 'src/user-files-management/user-files-management.model';
+import { userFile } from 'src/users-files-management/users-files-management.model';
 
 @Injectable()
 export class FilesManagementService {

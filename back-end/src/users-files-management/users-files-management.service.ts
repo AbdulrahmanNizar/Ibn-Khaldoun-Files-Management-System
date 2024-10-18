@@ -3,7 +3,7 @@ import { SuccessResponseObjectDto } from 'src/dto/SuccessResponseObjectDto';
 import { CreateUserFileDto } from './dto/CreateUserFileDto';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
-import { userFile } from './user-files-management.model';
+import { userFile } from './users-files-management.model';
 
 @Injectable()
 export class UserFilesManagementService {

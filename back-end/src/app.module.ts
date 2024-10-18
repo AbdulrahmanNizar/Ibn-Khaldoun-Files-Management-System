@@ -5,7 +5,8 @@ import { RegistrationModule } from './registration/registration.module';
 import { MongooseModule } from '@nestjs/mongoose';
 import { UsersManagementModule } from './users-management/users-management.module';
 import { FilesManagementModule } from './files-management/files-management.module';
-import { UserFilesManagementModule } from './user-files-management/user-files-management.module';
+import { UserFilesManagementModule } from './users-files-management/users-files-management.module';
+import { SubscriptionManagementModule } from './subscription-management/subscription-management.module';
 
 @Module({
   imports: [
@@ -16,6 +17,7 @@ import { UserFilesManagementModule } from './user-files-management/user-files-ma
     UsersManagementModule,
     FilesManagementModule,
     UserFilesManagementModule,
+    SubscriptionManagementModule,
   ],
   controllers: [AppController],
   providers: [AppService],

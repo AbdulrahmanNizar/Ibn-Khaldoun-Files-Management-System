@@ -1,5 +1,5 @@
 import { Test, TestingModule } from '@nestjs/testing';
-import { UserFilesManagementService } from './user-files-management.service';
+import { UserFilesManagementService } from './users-files-management.service';
 
 describe('UserFilesManagementService', () => {
   let service: UserFilesManagementService;
@@ -9,7 +9,9 @@ describe('UserFilesManagementService', () => {
       providers: [UserFilesManagementService],
     }).compile();
 
-    service = module.get<UserFilesManagementService>(UserFilesManagementService);
+    service = module.get<UserFilesManagementService>(
+      UserFilesManagementService,
+    );
   });
 
   it('should be defined', () => {

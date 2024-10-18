@@ -9,7 +9,7 @@ import {
   UploadedFile,
   UseInterceptors,
 } from '@nestjs/common';
-import { UserFilesManagementService } from './user-files-management.service';
+import { UserFilesManagementService } from './users-files-management.service';
 import { SuccessResponseObjectDto } from 'src/dto/SuccessResponseObjectDto';
 import { CreateUserFileDto } from './dto/CreateUserFileDto';
 import { FileInterceptor } from '@nestjs/platform-express';

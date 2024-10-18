@@ -3,7 +3,7 @@ import { FilesManagementService } from './files-management.service';
 import { FilesManagementController } from './files-management.controller';
 import { MongooseModule } from '@nestjs/mongoose';
 import { fileSchema } from './files-managment.model';
-import { userFileSchema } from 'src/user-files-management/user-files-management.model';
+import { userFileSchema } from 'src/users-files-management/users-files-management.model';
 
 @Module({
   imports: [

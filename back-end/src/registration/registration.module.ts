@@ -2,7 +2,7 @@ import { Module } from '@nestjs/common';
 import { RegistrationController } from './registration.controller';
 import { RegistrationService } from './registration.service';
 import { MongooseModule } from '@nestjs/mongoose';
-import { registrationSchema } from './registration.model';
+import { userSchema } from './registration.model';
 import { JwtModule } from '@nestjs/jwt';
 
 @Module({
@@ -13,7 +13,7 @@ import { JwtModule } from '@nestjs/jwt';
         expiresIn: '7d',
       },
     }),
-    MongooseModule.forFeature([{ name: 'User', schema: registrationSchema }]),
+    MongooseModule.forFeature([{ name: 'User', schema: userSchema }]),
   ],
   controllers: [RegistrationController],
   providers: [RegistrationService],

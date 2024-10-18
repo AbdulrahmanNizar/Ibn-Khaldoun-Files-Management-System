@@ -1,6 +1,6 @@
 import { HttpException, Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
-import { Registration } from './registration.model';
+import { User } from './registration.model';
 import { SuccessResponseObjectDto } from '../dto/SuccessResponseObjectDto';
 import { Model } from 'mongoose';
 import * as bcrypt from 'bcrypt';
@@ -9,13 +9,11 @@ import { CreateUserDto as SignUpUserDto } from './dto/SignUpUserDto';
 import { LoginUserDto } from './dto/LoginUserDto';
 import { ValidateUserToken } from './dto/ValidateUserToken';
 import { LogoutUserDto } from './dto/LogoutUserDto';
-import { CheckUserSubscriptionDto } from './dto/CheckUserSubscriptionDto';
-import { UpdateUserSubscriptionDto } from './dto/UpdateUserSubscriptionDto';
 
 @Injectable()
 export class RegistrationService {
   constructor(
-    @InjectModel('User') private readonly userModel: Model<Registration>,
+    @InjectModel('User') private readonly userModel: Model<User>,
     private readonly jwtService: JwtService,
   ) {}
 
@@ -142,54 +140,6 @@ export class RegistrationService {
       };
     } catch (err) {
       // return an error if the token was not valid
-      throw new HttpException(err, err.status);
-    }
-  }
-
-  async checkUserSubscription(
-    requestInfo: CheckUserSubscriptionDto,
-  ): Promise<SuccessResponseObjectDto | void> {
-    try {
-      const userInDB = await this.userModel.find({ _id: requestInfo.userId });
-
-      if (userInDB.length > 0) {
-        return {
-          successMessage: 'تم الحصول على اشتراك المستخدم',
-          statusCode: 200,
-          data: {
-            userSubscription: userInDB[0].subscription,
-          },
-        };
-      } else {
-        throw new HttpException('لم يتم ايجاد المستخدم', 404);
-      }
-    } catch (err) {
-      throw new HttpException(err, err.status);
-    }
-  }
-
-  async updateUserSubscription(
-    requestInfo: UpdateUserSubscriptionDto,
-  ): Promise<SuccessResponseObjectDto | void> {
-    try {
-      const userInDB = await this.userModel.find({
-        phoneNumber: requestInfo.userPhoneNumber,
-      });
-
-      if (userInDB.length > 0) {
-        await this.userModel.updateOne(
-          { phoneNumber: requestInfo.userPhoneNumber },
-          { $set: { subscription: requestInfo.newUserSubscription } },
-        );
-
-        return {
-          successMessage: 'تم التعديل على اشتراك المستخدم بنجاح',
-          statusCode: 200,
-        };
-      } else {
-        throw new HttpException('لم يتم ايجاد المستخدم', 404);
-      }
-    } catch (err) {
       throw new HttpException(err, err.status);
     }
   }

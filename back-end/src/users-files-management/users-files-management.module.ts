@@ -1,8 +1,8 @@
 import { Module } from '@nestjs/common';
-import { UserFilesManagementService } from './user-files-management.service';
-import { UserFilesManagementController } from './user-files-management.controller';
+import { UserFilesManagementService } from './users-files-management.service';
+import { UserFilesManagementController } from './users-files-management.controller';
 import { MongooseModule } from '@nestjs/mongoose';
-import { userFileSchema } from './user-files-management.model';
+import { userFileSchema } from './users-files-management.model';
 
 @Module({
   imports: [
