@@ -1,10 +1,7 @@
 <template>
   <div class="h-100" id="parent-element">
     <NavBarForMainSites />
-
-    <Suspense>
-      <UpdateFileForm />
-    </Suspense>
+    <UpdateFileForm />
   </div>
 </template>
 

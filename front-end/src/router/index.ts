@@ -9,6 +9,7 @@ import ThirdTirm from "@/views/ThirdTirm.vue";
 import Files from "@/views/Files.vue";
 import CreateFile from "@/views/CreateFile.vue";
 import UpdateFile from "@/views/UpdateFile.vue";
+import Subscriptions from "@/views/Subscriptions.vue";
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -79,6 +80,17 @@ const routes: Array<RouteRecordRaw> = [
     component: UpdateFile,
   },
   {
+    name: "Subscriptions",
+    path: "/admin/subscriptions",
+    component: Subscriptions,
+    meta: {
+      admin:
+        localStorage.getItem("UserId") == "6703e1c2a299c9695ba7b2e7"
+          ? false
+          : true,
+    },
+  },
+  {
     name: "NotFound",
     path: "/:pathName(.*)",
     component: NotFound,
@@ -93,6 +105,8 @@ const router = createRouter({
 router.beforeEach((to, from, next) => {
   if (to.meta.needsToken) {
     next("/login");
+  } else if (to.meta.admin) {
+    next("/");
   } else {
     next();
   }

@@ -6,9 +6,14 @@ export default createStore({
     userId: <string>localStorage.getItem("UserId"),
     userInfo: <any>[],
     userGrade: <string>"",
+    showOrHideSubscriptionCard: <boolean>false,
   },
   getters: {},
-  mutations: {},
+  mutations: {
+    showSubscriptionCard(state, payload): void {
+      state.showOrHideSubscriptionCard = !state.showOrHideSubscriptionCard;
+    },
+  },
   actions: {
     async logout(context, payload): Promise<void> {
       try {
