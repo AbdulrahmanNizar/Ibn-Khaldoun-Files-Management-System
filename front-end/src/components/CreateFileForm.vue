@@ -123,7 +123,7 @@ const uploadFile = async (event: any): Promise<void> => {
     formData.append("file", file);
 
     const response = await axios.post(
-      `http://192.168.1.241:3000/user-files-management/saveUserFile/${userId.value}`,
+      `http://192.168.1.241:3000/users-files-management/createUserFile/${userId.value}`,
       formData
     );
 

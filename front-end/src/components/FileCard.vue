@@ -1,5 +1,8 @@
 <template>
   <div
+    v-motion
+    :initial="{ opacity: 0, y: 150 }"
+    :visibleOnce="{ opacity: 1, y: 0 }"
     class="card text-bg-primary mt-1 shadow"
     style="width: 18rem"
     v-for="fileDetail in fileInfo"

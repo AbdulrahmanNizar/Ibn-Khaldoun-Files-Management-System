@@ -6,7 +6,7 @@
       <SubscriptionCard
         v-if="showSubscriptionCard"
         v-motion
-        :initial="{ opacity: 0, y: -50 }"
+        :initial="{ opacity: 0, y: 150 }"
         :visibleOnce="{ opacity: 1, y: 0 }"
       />
     </transition>
@@ -89,7 +89,7 @@
 </template>
 
 <script setup lang="ts">
-import { computed, ref } from "vue";
+import { computed, onMounted, ref } from "vue";
 import { useStore } from "vuex";
 import { useRouter } from "vue-router";
 import NavBarForMainSites from "@/components/NavBarForMainSites.vue";
@@ -122,9 +122,11 @@ const checkUserSubscription = async (tirm: string): Promise<void> => {
     );
     const data = await response.json();
     if (data.statusCode >= 200 && data.statusCode < 300) {
-      if (data.data.userSubscription == true) {
+      if (data.data.userSubscription == "Yes") {
+        localStorage.setItem("Subscription", data.data.userSubscription);
         router.push({ path: tirm });
       } else {
+        localStorage.setItem("Subscription", data.data.userSubscription);
         store.commit("showSubscriptionCard");
       }
     }

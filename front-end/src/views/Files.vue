@@ -54,7 +54,6 @@ const subject = ref<string | any>(route.params.subject);
 const tirm = ref<string | any>(route.params.tirm);
 const subjectNameInArabic = getSubjectNameInArabic(subject.value);
 const userFiles = ref<any>([]);
-const base64OfUserFiles = ref<string[]>([]);
 
 const getFiles = async (): Promise<void> => {
   try {

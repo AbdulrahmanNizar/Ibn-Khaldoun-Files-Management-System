@@ -40,6 +40,8 @@ const routes: Array<RouteRecordRaw> = [
     component: FirstTirm,
     meta: {
       needsToken: localStorage.getItem("JwtToken") ? false : true,
+      needsSubscription:
+        localStorage.getItem("Subscription") == "Yes" ? false : true,
     },
   },
   {
@@ -48,6 +50,8 @@ const routes: Array<RouteRecordRaw> = [
     component: SecondTirm,
     meta: {
       needsToken: localStorage.getItem("JwtToken") ? false : true,
+      needsSubscription:
+        localStorage.getItem("Subscription") == "Yes" ? false : true,
     },
   },
   {
@@ -56,6 +60,8 @@ const routes: Array<RouteRecordRaw> = [
     component: ThirdTirm,
     meta: {
       needsToken: localStorage.getItem("JwtToken") ? false : true,
+      needsSubscription:
+        localStorage.getItem("Subscription") == "Yes" ? false : true,
     },
   },
   {
@@ -64,6 +70,8 @@ const routes: Array<RouteRecordRaw> = [
     component: Files,
     meta: {
       needsToken: localStorage.getItem("JwtToken") ? false : true,
+      needsSubscription:
+        localStorage.getItem("Subscription") == "Yes" ? false : true,
     },
   },
   {
@@ -72,6 +80,8 @@ const routes: Array<RouteRecordRaw> = [
     component: CreateFile,
     meta: {
       needsToken: localStorage.getItem("JwtToken") ? false : true,
+      needsSubscription:
+        localStorage.getItem("Subscription") == "Yes" ? false : true,
     },
   },
   {
@@ -105,8 +115,8 @@ const router = createRouter({
 router.beforeEach((to, from, next) => {
   if (to.meta.needsToken) {
     next("/login");
-  } else if (to.meta.admin) {
-    next("/");
+  } else if (to.meta.admin || to.meta.needsSubscription) {
+    next("/main");
   } else {
     next();
   }

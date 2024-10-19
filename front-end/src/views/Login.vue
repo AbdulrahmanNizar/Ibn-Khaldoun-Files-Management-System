@@ -9,11 +9,17 @@
         src="@/images/tiny-people-carrying-key.avif"
         alt="people carrying a login key"
         class="img-fluid rounded"
+        v-motion
+        :initial="{ opacity: 0, y: 100 }"
+        :visibleOnce="{ opacity: 1, y: 0 }"
       />
 
       <div
         class="d-flex flex-column justify-content-center align-items-center border border-primary border-2 rounded p-3 shadow mt-2"
         style="width: 60%"
+        v-motion
+        :initial="{ opacity: 0, y: 100 }"
+        :visibleOnce="{ opacity: 1, y: 0 }"
       >
         <h3 class="my-2 w-100 text-center">تسجيل الدخول</h3>
         <transition name="fadeError">
@@ -153,9 +159,12 @@ const login = async (): Promise<void> => {
         localStorage.setItem("UserId", data.data.userId);
         localStorage.setItem("Username", data.data.username);
         localStorage.setItem("JwtToken", data.data.token);
+        localStorage.setTime("Subscription", false);
 
         router.push({ path: "/main" });
-        window.location.reload();
+        setTimeout(() => {
+          window.location.reload();
+        }, 10);
       } else {
         showLoader.value = false;
 

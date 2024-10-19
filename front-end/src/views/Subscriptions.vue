@@ -6,8 +6,11 @@
       class="d-flex flex-row flex-wrap justify-content-center align-items-center mt-5 p-3 w-100"
     >
       <div
-        class="d-flex flex-column justify-content-center align-items-center border border-primary border-2 rounded p-3 shadow mt-2"
+        class="d-flex flex-column justify-content-center align-items-center bg-primary bg-gradient rounded p-3 shadow mt-2 text-white"
         style="width: 60%"
+        v-motion
+        :initial="{ opacity: 0, y: 150 }"
+        :visibleOnce="{ opacity: 1, y: 0 }"
       >
         <h3 class="my-2 w-100 text-center">اضافة مشترك جديد</h3>
 
@@ -18,6 +21,16 @@
             v-show="showErrorForAdmin"
           >
             {{ errorForAdmin }}
+          </div>
+        </transition>
+
+        <transition name="fadeError">
+          <div
+            class="alert alert-danger fade show w-100 text-center"
+            role="alert"
+            v-show="showErrorForNotFoundUser"
+          >
+            {{ errorForNotFoundUser }}
           </div>
         </transition>
 
@@ -45,7 +58,7 @@
             class="w-100 d-flex flex-row justify-content-center align-items-center mt-4"
           >
             <button
-              class="btn btn-primary w-75"
+              class="btn btn-outline-light w-75"
               :disabled="theFieldsAreReady"
               @click="addNewSubscriber"
             >
@@ -80,6 +93,8 @@ const showLoader = ref<boolean>(false);
 const userPhoneNumber = ref<string>("");
 const showErrorForAdmin = ref<boolean>(false);
 const errorForAdmin = ref<string>("");
+const showErrorForNotFoundUser = ref<boolean>(false);
+const errorForNotFoundUser = ref<string>("");
 
 const theFieldsAreReady = computed((): boolean => {
   if (userPhoneNumber.value != "") {
@@ -101,13 +116,23 @@ const addNewSubscriber = async (): Promise<void> => {
         }),
       };
 
+      showLoader.value = true;
       const response = await fetch(
         "http://192.168.1.241:3000/subscription-management/updateUserSubscription",
         requestOptions
       );
       const data = await response.json();
       if (data.statusCode >= 200 && data.statusCode < 300) {
-        console.log("Done!");
+        showLoader.value = false;
+        userPhoneNumber.value = "";
+      } else {
+        showLoader.value = false;
+
+        showErrorForNotFoundUser.value = true;
+        errorForNotFoundUser.value = data.message;
+        setTimeout(() => {
+          showErrorForNotFoundUser.value = false;
+        }, 3000);
       }
     } else {
       showErrorForAdmin.value = true;
