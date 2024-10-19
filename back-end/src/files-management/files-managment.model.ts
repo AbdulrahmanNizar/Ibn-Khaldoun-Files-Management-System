@@ -14,7 +14,7 @@ export const fileSchema = new mongoose.Schema(
   { timestamps: true },
 );
 
-export interface file {
+export interface File {
   id: string;
   userId: string;
   fileTitle: string;

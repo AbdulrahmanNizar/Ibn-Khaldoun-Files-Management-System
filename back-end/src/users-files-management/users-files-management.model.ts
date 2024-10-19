@@ -8,7 +8,7 @@ export const userFileSchema = new mongoose.Schema(
   { timestamps: true },
 );
 
-export interface userFile {
+export interface UserFile {
   id: string;
   userId: string;
   file: object;

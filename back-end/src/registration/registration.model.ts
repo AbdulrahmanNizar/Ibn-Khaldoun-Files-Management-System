@@ -11,6 +11,8 @@ export const userSchema = new mongoose.Schema(
     class: { type: String, required: true },
     logged: { type: Boolean, required: true },
     subscription: { type: Boolean, required: true },
+    subscriptionDate: { type: Object || String, required: true },
+    subscriptionExpireDate: { type: Object || String, required: true },
   },
   { timestamps: true },
 );
@@ -26,4 +28,6 @@ export interface User {
   class: string;
   logged: boolean;
   subscription: boolean;
+  subscriptionDate: object | string;
+  subscriptionExpireDate: object | string;
 }

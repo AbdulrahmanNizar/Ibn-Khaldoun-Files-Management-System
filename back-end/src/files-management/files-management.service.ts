@@ -1,22 +1,22 @@
 import { HttpException, Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
-import { file } from './files-managment.model';
+import { File } from './files-managment.model';
 import { SuccessResponseObjectDto } from 'src/dto/SuccessResponseObjectDto';
 import { CreateFileDto } from './dto/CreateFileDto';
-import { date } from 'src/helpers/Date';
+import { date } from 'src/helpers/CurrentYearDate';
 import { time } from 'src/helpers/Time';
 import { GetFilesDto } from './dto/GetFilesDto';
 import { GetFileInfoDto } from './dto/GetFileInfoDto';
 import { DeleteFileDto } from './dto/DeleteFileDto';
 import { UpdateFileDto } from './dto/UpdateFileDto';
-import { userFile } from 'src/users-files-management/users-files-management.model';
+import { UserFile } from 'src/users-files-management/users-files-management.model';
 
 @Injectable()
 export class FilesManagementService {
   constructor(
-    @InjectModel('File') private readonly fileModel: Model<file>,
-    @InjectModel('UserFile') private readonly userFileModel: Model<userFile>,
+    @InjectModel('File') private readonly fileModel: Model<File>,
+    @InjectModel('UserFile') private readonly userFileModel: Model<UserFile>,
   ) {}
 
   async createFile(

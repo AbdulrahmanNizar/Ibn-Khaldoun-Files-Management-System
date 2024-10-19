@@ -25,7 +25,7 @@ export class RegistrationService {
       const salt = await bcrypt.genSalt(10);
       const hashedPassword = await bcrypt.hash(requestInfo.password, salt);
 
-      // add the new user to the database
+      // adding the new user to the database
       const newUser = new this.userModel({
         username: requestInfo.username,
         email: requestInfo.email,
@@ -36,6 +36,8 @@ export class RegistrationService {
         class: requestInfo.userClass,
         logged: true,
         subscription: false,
+        subscriptionDate: '',
+        subscriptionExpireDate: '',
       });
       await newUser.save();
 
