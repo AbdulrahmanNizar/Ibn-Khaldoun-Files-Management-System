@@ -6,7 +6,7 @@ import { Model } from 'mongoose';
 import { UserFile } from './users-files-management.model';
 
 @Injectable()
-export class UserFilesManagementService {
+export class UsersFilesManagementService {
   constructor(
     @InjectModel('UserFile') private readonly userFileModel: Model<UserFile>,
   ) {}

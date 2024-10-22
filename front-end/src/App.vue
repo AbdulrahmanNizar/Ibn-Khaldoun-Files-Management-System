@@ -9,6 +9,7 @@
 <script setup lang="ts">
 import { onMounted, ref } from "vue";
 import { useRouter, useRoute } from "vue-router";
+import { RequestOptionsInterface } from "./interfaces/RequestOptionsInterface";
 
 const router = useRouter();
 const route = useRoute();
@@ -50,7 +51,7 @@ const validateTheUserAuthToken = async (): Promise<void> => {
   try {
     if (route.path != "/login" && route.path != "/signup") {
       if (JwtToken.value != "") {
-        const requestOptions: any = {
+        const requestOptions: RequestOptionsInterface | any = {
           method: "POST",
           mode: "cors",
           headers: { "Content-Type": "application/json" },

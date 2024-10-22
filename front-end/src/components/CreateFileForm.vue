@@ -99,6 +99,8 @@ const currentFileId = ref<string>("");
 const showSaveUserFileError = ref<boolean>(false);
 const saveUserFileError = ref<string>("");
 let file: any;
+const showRequestError = ref<boolean>(false);
+const requestError = ref<string>("");
 
 const fieldsAreReady = computed((): boolean => {
   if (
@@ -171,6 +173,9 @@ const createFile = async (): Promise<void> => {
 
       if (data.statusCode >= 200 && data.statusCode < 300) {
         router.push({ path: `/files/${tirm.value}/${subject.value}` });
+      } else {
+        showRequestError.value = true;
+        requestError.value = data.message;
       }
     }
   } catch (err) {

@@ -9,7 +9,7 @@ export const fileSchema = new mongoose.Schema(
     tirm: { type: String, required: true },
     subject: { type: String, required: true },
     createdAtTime: { type: String, required: true },
-    createdAtDate: { type: String, required: true },
+    createdAtDate: { type: Object, required: true },
   },
   { timestamps: true },
 );
@@ -23,5 +23,5 @@ export interface File {
   tirm: string;
   subject: string;
   createdAtTime: string;
-  createdAtDate: string;
+  createdAtDate: object;
 }

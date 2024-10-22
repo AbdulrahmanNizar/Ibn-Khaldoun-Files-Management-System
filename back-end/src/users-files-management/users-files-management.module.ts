@@ -1,5 +1,5 @@
 import { Module } from '@nestjs/common';
-import { UserFilesManagementService } from './users-files-management.service';
+import { UsersFilesManagementService } from './users-files-management.service';
 import { UserFilesManagementController } from './users-files-management.controller';
 import { MongooseModule } from '@nestjs/mongoose';
 import { userFileSchema } from './users-files-management.model';
@@ -9,6 +9,6 @@ import { userFileSchema } from './users-files-management.model';
     MongooseModule.forFeature([{ name: 'UserFile', schema: userFileSchema }]),
   ],
   controllers: [UserFilesManagementController],
-  providers: [UserFilesManagementService],
+  providers: [UsersFilesManagementService],
 })
-export class UserFilesManagementModule {}
+export class UsersFilesManagementModule {}

@@ -9,15 +9,15 @@ import {
   UploadedFile,
   UseInterceptors,
 } from '@nestjs/common';
-import { UserFilesManagementService } from './users-files-management.service';
+import { UsersFilesManagementService } from './users-files-management.service';
 import { SuccessResponseObjectDto } from 'src/dto/SuccessResponseObjectDto';
 import { CreateUserFileDto } from './dto/CreateUserFileDto';
 import { FileInterceptor } from '@nestjs/platform-express';
 
-@Controller('user-files-management')
+@Controller('users-files-management')
 export class UserFilesManagementController {
   constructor(
-    private readonly userFilesManagementService: UserFilesManagementService,
+    private readonly usersFilesManagementService: UsersFilesManagementService,
   ) {}
 
   @Post('/createUserFile/:userId')
@@ -35,7 +35,10 @@ export class UserFilesManagementController {
     res
       .status(201)
       .json(
-        await this.userFilesManagementService.createUserFile(userFileDto, file),
+        await this.usersFilesManagementService.createUserFile(
+          userFileDto,
+          file,
+        ),
       );
   }
 }

@@ -26,7 +26,7 @@ export class SubscriptionManagementService {
             successMessage: 'تم الحصول على اشتراك المستخدم',
             statusCode: 200,
             data: {
-              userSubscription: false,
+              userSubscription: 'No',
             },
           };
         } else {
@@ -45,7 +45,7 @@ export class SubscriptionManagementService {
               successMessage: 'تم الحصول على اشتراك المستخدم',
               statusCode: 200,
               data: {
-                userSubscription: false,
+                userSubscription: 'No',
               },
             };
           } else {
@@ -53,7 +53,7 @@ export class SubscriptionManagementService {
               successMessage: 'تم الحصول على اشتراك المستخدم',
               statusCode: 200,
               data: {
-                userSubscription: true,
+                userSubscription: 'Yes',
               },
             };
           }

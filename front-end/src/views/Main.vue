@@ -85,11 +85,23 @@
         الفصل الدراسي الثالث
       </button>
     </div>
+
+    <transition name="fadeShow">
+      <div
+        class="p-3 bg-primary position-absolute top-50 end-50 rounded"
+        style="width: 3%; height: 6%"
+        v-show="showLoader"
+      >
+        <div class="spinner-border text-light" role="status">
+          <span class="visually-hidden">Loading...</span>
+        </div>
+      </div>
+    </transition>
   </div>
 </template>
 
 <script setup lang="ts">
-import { computed, onMounted, ref } from "vue";
+import { computed, ref } from "vue";
 import { useStore } from "vuex";
 import { useRouter } from "vue-router";
 import NavBarForMainSites from "@/components/NavBarForMainSites.vue";
@@ -100,6 +112,10 @@ const store = useStore();
 const router = useRouter();
 const username = ref<string | null>(localStorage.getItem("Username"));
 const userId = ref<string | null>(localStorage.getItem("UserId"));
+const userSubscription = ref<string | null>(
+  localStorage.getItem("Subscription")
+);
+const showLoader = ref<boolean>(false);
 
 const showSubscriptionCard = computed(() => {
   return store.state.showOrHideSubscriptionCard;
@@ -107,27 +123,39 @@ const showSubscriptionCard = computed(() => {
 
 const checkUserSubscription = async (tirm: string): Promise<void> => {
   try {
-    const requestOptions: RequestOptionsInterface | any = {
-      method: "POST",
-      mode: "cors",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        userId: userId.value,
-      }),
-    };
+    if (userSubscription.value == "Yes") {
+      router.push({ path: tirm });
+    } else if (userSubscription.value == "" || userSubscription.value == "No") {
+      const requestOptions: RequestOptionsInterface | any = {
+        method: "POST",
+        mode: "cors",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          userId: userId.value,
+        }),
+      };
 
-    const response = await fetch(
-      "http://192.168.1.241:3000/subscription-management/checkUserSubscription",
-      requestOptions
-    );
-    const data = await response.json();
-    if (data.statusCode >= 200 && data.statusCode < 300) {
-      if (data.data.userSubscription == "Yes") {
-        localStorage.setItem("Subscription", data.data.userSubscription);
-        router.push({ path: tirm });
-      } else {
-        localStorage.setItem("Subscription", data.data.userSubscription);
-        store.commit("showSubscriptionCard");
+      showLoader.value = true;
+
+      const response = await fetch(
+        "http://192.168.1.241:3000/subscription-management/checkUserSubscription",
+        requestOptions
+      );
+      const data = await response.json();
+      if (data.statusCode >= 200 && data.statusCode < 300) {
+        if (data.data.userSubscription == "Yes") {
+          showLoader.value = false;
+
+          localStorage.setItem("Subscription", data.data.userSubscription);
+
+          router.push({ path: tirm });
+          window.location.reload();
+        } else if (data.data.userSubscription == "No") {
+          showLoader.value = false;
+
+          localStorage.setItem("Subscription", data.data.userSubscription);
+          store.commit("showSubscriptionCard");
+        }
       }
     }
   } catch (err) {

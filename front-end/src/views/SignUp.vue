@@ -349,7 +349,7 @@ const signup = async (): Promise<void> => {
           localStorage.setItem("UserId", data.data.userId);
           localStorage.setItem("Username", data.data.username);
           localStorage.setItem("JwtToken", data.data.token);
-          localStorage.setTime("Subscription", false);
+          localStorage.setItem("Subscription", "");
 
           router.push({ path: "/main" });
           setTimeout(() => {
