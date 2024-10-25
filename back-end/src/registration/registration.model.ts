@@ -9,6 +9,11 @@ export const userSchema = new mongoose.Schema(
     phoneNumber: { type: String, required: true },
     grade: { type: String, required: true },
     class: { type: String, required: true },
+    school: { type: String, required: true },
+    schoolBranch: { type: String, required: true },
+    schoolPlace: { type: String, required: true },
+    gradeSection: { type: String, required: true },
+    sex: { type: String, required: true },
     logged: { type: Boolean, required: true },
     subscription: { type: Boolean, required: true },
     subscriptionDate: { type: Object || String, required: true },
@@ -26,6 +31,11 @@ export interface User {
   phoneNumber: string;
   grade: string;
   class: string;
+  school: string;
+  schoolBranch: string;
+  schoolPlace: string;
+  sex: string;
+  gradeSection: string;
   logged: boolean;
   subscription: boolean;
   subscriptionDate: object | string;

@@ -6,4 +6,9 @@ export class CreateUserDto {
   readonly userPhoneNumber: string;
   readonly userGrade: string;
   readonly userClass: string;
+  readonly userSchool: string;
+  readonly userSchoolPlace: string;
+  readonly userSchoolBranch: string;
+  readonly userGradeSection: string;
+  readonly userSex: string;
 }

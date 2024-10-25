@@ -25,7 +25,7 @@ export class UserFilesManagementController {
   async saveUserFile(
     @UploadedFile(
       new ParseFilePipe({
-        validators: [new MaxFileSizeValidator({ maxSize: 300000 })],
+        validators: [new MaxFileSizeValidator({ maxSize: 300000000 })],
       }),
     )
     file: Express.Multer.File,
