@@ -23,6 +23,40 @@
       >
         <h3 class="my-2 w-100 text-center">انشاء حساب</h3>
 
+        <div class="w-100 btn-group mt-2">
+          <button
+            class="btn btn-primary w-50"
+            @click="switchMood('schoolInfo')"
+            v-if="showSchoolInfoInputs == true"
+          >
+            المعلومات المدرسية
+          </button>
+
+          <button
+            class="btn btn-outline-primary w-50"
+            @click="switchMood('schoolInfo')"
+            v-else="showSchoolInfoInputs"
+          >
+            المعلومات المدرسية
+          </button>
+
+          <button
+            class="btn btn-primary w-50"
+            @click="switchMood('userInfo')"
+            v-if="showUserInfoInputs == true"
+          >
+            المعلومات الشخصية
+          </button>
+
+          <button
+            class="btn btn-outline-primary w-50"
+            @click="switchMood('userInfo')"
+            v-else="showUserInfoInputs"
+          >
+            المعلومات الشخصية
+          </button>
+        </div>
+
         <transition name="fadeError">
           <div
             class="alert alert-danger w-100 text-center"
@@ -46,6 +80,10 @@
 
         <div
           class="d-flex flex-column justify-content-start align-items-start w-100"
+          v-if="showUserInfoInputs"
+          v-motion
+          :initial="{ opacity: 0, y: 100 }"
+          :visibleOnce="{ opacity: 1, y: 0 }"
         >
           <div
             class="d-flex flex-column justify-content-end align-items-end w-100 mt-2"
@@ -202,6 +240,87 @@
         </div>
 
         <div
+          class="d-flex flex-column justify-content-start align-items-start w-100"
+          v-if="showSchoolInfoInputs"
+          v-motion
+          :initial="{ opacity: 0, y: 100 }"
+          :visibleOnce="{ opacity: 1, y: 0 }"
+        >
+          <div
+            class="d-flex flex-column justify-content-end align-items-end w-100 mt-2"
+          >
+            <label for="#schoolCity" class="form-label me-2">المنطقة</label>
+            <input
+              type="text"
+              id="schoolCity"
+              placeholder="المدينة"
+              class="form-control text-end"
+              value="الرياض"
+              readonly
+            />
+          </div>
+
+          <div
+            class="d-flex flex-column justify-content-end align-items-end w-100 mt-2"
+          >
+            <label for="#school" class="form-label me-2">المدرسة</label>
+            <select
+              id="school"
+              class="form-select text-end"
+              v-model="userSchool"
+            >
+              <option value="المدرسة" selected>المدرسة</option>
+              <option value="ابن خلدون">ابن خلدون</option>
+            </select>
+          </div>
+
+          <div
+            class="d-flex flex-column justify-content-end align-items-end w-100 mt-2"
+          >
+            <label for="#branch" class="form-label me-2">الفرع</label>
+            <select
+              id="branch"
+              class="form-select text-end"
+              v-model="userSchoolBranch"
+            >
+              <option value="الفرع" selected>الفرع</option>
+              <option value="المنار" selected>المنار</option>
+              <option value="عرقة" selected>عرقة</option>
+              <option value="النفل" selected>النفل</option>
+              <option value="الياسمين" selected>الياسمين</option>
+            </select>
+          </div>
+
+          <div
+            class="d-flex flex-column justify-content-end align-items-end w-100 mt-2"
+          >
+            <label for="#gradeSection" class="form-label me-2">القسم</label>
+            <select
+              id="gradeSection"
+              class="form-select text-end"
+              v-model="userGradeSection"
+            >
+              <option value="القسم" selected>القسم</option>
+              <option value="ابتدائي">ابتدائي</option>
+              <option value="متوسط">متوسط</option>
+              <option value="ثانوي">ثانوي</option>
+              <option value="عالمي">عالمي</option>
+            </select>
+          </div>
+
+          <div
+            class="d-flex flex-column justify-content-end align-items-end w-100 mt-2"
+          >
+            <label for="#userSex" class="form-label me-2">النوع</label>
+            <select id="userSex" class="form-select text-end" v-model="userSex">
+              <option value="النوع">النوع</option>
+              <option value="بنين">بنين</option>
+              <option value="بنات">بنات</option>
+            </select>
+          </div>
+        </div>
+
+        <div
           class="w-100 d-flex flex-row justify-content-center align-items-center mt-4"
         >
           <button
@@ -248,12 +367,28 @@ const errorForInvalidEmail = ref<string>("");
 const showErrorForInvalidPassword = ref<boolean>(false);
 const errorForInvalidPassword = ref<string>("");
 const showLoader = ref<boolean>(false);
+const showUserInfoInputs = ref<boolean>(true);
+const showSchoolInfoInputs = ref<boolean>(false);
+const userSchool = ref<string>("المدرسة");
+const userSchoolBranch = ref<string>("الفرع");
+const userGradeSection = ref<string>("القسم");
+const userSex = ref<string>("النوع");
 
 onMounted((): void => {
   if (localStorage.getItem("JwtToken")) {
     router.push({ path: "/main" });
   }
 });
+
+const switchMood = (inputsType: string) => {
+  if (inputsType == "userInfo") {
+    showUserInfoInputs.value = true;
+    showSchoolInfoInputs.value = false;
+  } else if (inputsType == "schoolInfo") {
+    showUserInfoInputs.value = false;
+    showSchoolInfoInputs.value = true;
+  }
+};
 
 const firstGrade = computed((): boolean => {
   return userGrade.value.includes("الاول ابتدائي");
