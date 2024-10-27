@@ -445,7 +445,11 @@ const theFieldsAreReady = computed((): boolean => {
     userNationalId.value != "" &&
     userPhoneNumber.value != "" &&
     userGrade.value != "اختيار المرحلة" &&
-    userClass.value != "اختيار الصف"
+    userClass.value != "اختيار الصف" &&
+    userGradeSection.value != "القسم" &&
+    userSchool.value != "المدرسة" &&
+    userSchoolBranch.value != "الفرع" &&
+    userSex.value != "النوع"
   ) {
     return false;
   } else {
@@ -455,7 +459,7 @@ const theFieldsAreReady = computed((): boolean => {
 
 const signup = async (): Promise<void> => {
   try {
-    if (password.value.length > 6) {
+    if (password.value.length >= 7) {
       if (email.value.includes("@")) {
         const requestOptions: RequestOptionsInterface | any = {
           method: "POST",
@@ -469,6 +473,11 @@ const signup = async (): Promise<void> => {
             userPhoneNumber: userPhoneNumber.value,
             userGrade: userGrade.value,
             userClass: userClass.value,
+            userSchool: userSchool.value,
+            userSchoolBranch: userSchoolBranch.value,
+            userGradeSection: userGradeSection.value,
+            userSex: userSex.value,
+            userSchoolPlace: "الرياض",
           }),
         };
 
