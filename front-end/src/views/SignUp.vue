@@ -59,7 +59,7 @@
 
         <transition name="fadeError">
           <div
-            class="alert alert-danger w-100 text-center"
+            class="alert alert-danger w-100 text-center mt-2"
             role="alert"
             v-if="showErrorForInvalidEmail"
           >
@@ -68,7 +68,7 @@
         </transition>
         <transition name="fadeError">
           <div
-            class="alert alert-danger w-100 text-center"
+            class="alert alert-danger w-100 text-center mt-2"
             role="alert"
             v-if="showErrorForInvalidPassword"
           >
@@ -284,10 +284,18 @@
               v-model="userSchoolBranch"
             >
               <option value="الفرع" selected>الفرع</option>
-              <option value="المنار" selected>المنار</option>
-              <option value="عرقة" selected>عرقة</option>
-              <option value="النفل" selected>النفل</option>
-              <option value="الياسمين" selected>الياسمين</option>
+              <option value="المنار" v-show="ibnKhaldounSchoolsBranches">
+                المنار
+              </option>
+              <option value="عرقة" v-show="ibnKhaldounSchoolsBranches">
+                عرقة
+              </option>
+              <option value="النفل" v-show="ibnKhaldounSchoolsBranches">
+                النفل
+              </option>
+              <option value="الياسمين" v-show="ibnKhaldounSchoolsBranches">
+                الياسمين
+              </option>
             </select>
           </div>
 
@@ -436,6 +444,10 @@ const eleventhGrade = computed((): boolean => {
 
 const twelfthGrade = computed((): boolean => {
   return userGrade.value.includes("الثالث ثانوي");
+});
+
+const ibnKhaldounSchoolsBranches = computed(() => {
+  return userSchool.value.includes("ابن خلدون");
 });
 
 const theFieldsAreReady = computed((): boolean => {
